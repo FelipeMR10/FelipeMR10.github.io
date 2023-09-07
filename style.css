@@ -9,6 +9,13 @@
 body {
     color: #CABFAB;
     background-color: #3f3f40ff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
 }
 
 .header {
@@ -26,6 +33,7 @@ body {
     display: flex;
     position: relative;
     align-items: center;
+    transition: transform 10s ease-in-out;
 }
 
 li {
@@ -39,7 +47,7 @@ li:hover {
 }
 
 img {
-    width: 30vw;
+    width: 25vw;
 }
 
 .fa-bars {
@@ -55,9 +63,7 @@ img {
 
 .title-2 {
     font-size: 200%;
-    display: inline-block;
-    position: relative;
-    left: 5rem;
+    margin: 4rem;
 }
 
 .info-1 {
@@ -67,9 +73,34 @@ img {
     margin-top: 2rem;
 }
 
+a img {
+    width: 2vw;
+    margin: .8rem;
+    margin-right: 2rem;
+}
+
+footer {
+    background-color: #424243ff;
+    box-shadow: 0px -3px 5px rgba(0, 0, 0, .5);
+    text-align: right;
+    position: sticky;
+    bottom: 0;
+}
+
 @media screen and (max-width: 840px) {
     .menu {
         display: none;
+    }
+
+    .menu_bar {
+        display: block;
+        position: fixed;
+        top: auto;
+        right: 1rem;
+    }
+
+    li {
+        margin: 1rem;
     }
 
     .menu.active {
@@ -77,9 +108,9 @@ img {
         flex-direction: column;
         position: absolute;
         top: 8%;
-        width: 90vw;
-        height: auto;
-        background-color: #424243ff;
+        width: 100vw;
+        height: 50vh;
+        background-color: #424243ff;        
     }
 
     .header {
@@ -91,8 +122,7 @@ img {
         width: 60%;
     }
 
-    .menu_bar {
-        display: flex;
-        margin: auto;
+    a img {
+        width: 10vw;
     }
 }
