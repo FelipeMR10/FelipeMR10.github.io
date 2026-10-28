@@ -129,7 +129,7 @@
   });
 
   gsap.utils.toArray('.section__head .eyebrow, .about .eyebrow, .contact .eyebrow').forEach(function (el) {
-    gsap.from(el, { x: -24, autoAlpha: 0, duration: .9, scrollTrigger: { trigger: el, start: 'top 90%' } });
+    gsap.from(el, { y: 16, autoAlpha: 0, duration: .9, scrollTrigger: { trigger: el, start: 'top 90%' } });
   });
 
   // Tarjetas de servicios en cascada
@@ -173,7 +173,7 @@
 
   // Sobre mí
   gsap.from('.about__text p:not(.eyebrow)', { y: 30, autoAlpha: 0, stagger: .15, scrollTrigger: { trigger: '.about', start: 'top 70%' } });
-  gsap.from('.values li', { x: 60, autoAlpha: 0, stagger: .12, scrollTrigger: { trigger: '.values', start: 'top 80%' } });
+  gsap.from('.values li', { y: 40, autoAlpha: 0, stagger: .12, scrollTrigger: { trigger: '.values', start: 'top 80%' } });
 
   // Contacto
   gsap.from('.contact__title .line__in', { yPercent: 110, rotate: 3, stagger: .12, duration: 1.2, scrollTrigger: { trigger: '.contact', start: 'top 70%' } });

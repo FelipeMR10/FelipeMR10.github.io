@@ -18,7 +18,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; overflow-x: clip; }
 body {
   margin: 0;
   background: var(--bg);
@@ -27,6 +27,7 @@ body {
   font-size: 17px;
   line-height: 1.6;
   overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 ::selection { background: var(--gold); color: var(--bg); }
@@ -37,8 +38,9 @@ svg { stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 4px; }
 
 /* Grano de película y resplandor del cursor */
+.fx { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: 100; }
 .grain {
-  position: fixed; inset: -50%; z-index: 100; pointer-events: none; opacity: .07;
+  position: absolute; inset: -50%; opacity: .07;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   animation: grain 1.2s steps(6) infinite;
 }
@@ -47,8 +49,8 @@ svg { stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round
   60% { transform: translate(-2%, -1%); } 80% { transform: translate(3%, 3%); } 100% { transform: translate(0, 0); }
 }
 .cursor-glow {
-  position: fixed; top: 0; left: 0; width: 520px; height: 520px; margin: -260px 0 0 -260px; z-index: 0;
-  border-radius: 50%; pointer-events: none; opacity: 0;
+  position: absolute; top: 0; left: 0; width: 520px; height: 520px; margin: -260px 0 0 -260px;
+  border-radius: 50%; opacity: 0; mix-blend-mode: screen;
   background: radial-gradient(circle, rgba(212, 171, 85, .10), transparent 65%);
 }
 
@@ -229,6 +231,7 @@ svg { stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round
   .contact__item { width: 100%; }
   .footer { justify-content: center; text-align: center; }
 }
+@media (pointer: coarse) { .cursor-glow { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
