@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" width="900" height="200" role="img" aria-label="Felipe Madrigal, Desarrollador de software">
+  <g fill="none" stroke="#d4ab55" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" transform="translate(10 25)">
+    <path d="M48 8 H34 Q24 8 24 18 V60 Q24 71 10 75 Q24 79 24 90 V132 Q24 142 34 142 H48"/>
+    <path d="M80 8 H94 Q104 8 104 18 V60 Q104 71 118 75 Q104 79 104 90 V132 Q104 142 94 142 H80"/>
+  </g>
+  <text x="170" y="112" font-family="'Saira Condensed', 'Arial Narrow', sans-serif" font-size="82" font-weight="500" letter-spacing="5.7" fill="#f2e8d2">FELIPE MADRIGAL</text>
+  <text x="172" y="154" font-family="'Saira Condensed', 'Arial Narrow', sans-serif" font-size="23" font-weight="500" letter-spacing="7.8" fill="#c98448">DESARROLLADOR DE SOFTWARE</text>
+</svg>

@@ -1,73 +1,229 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="icon-web.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="icon-web.ico">
-    <title>Felipe Madrigal</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Felipe Madrigal · Desarrollo de software profesional a tu alcance</title>
+  <meta name="description" content="Desarrollo de software profesional a tu alcance: páginas web, eCommerce, apps, plataformas, APIs, inteligencia artificial y pruebas QA. Felipe Madrigal, Colombia.">
+  <meta name="theme-color" content="#120e0a">
+  <meta property="og:title" content="Felipe Madrigal · Desarrollo de software profesional a tu alcance">
+  <meta property="og:description" content="Web, eCommerce, apps, APIs, IA y QA. Escríbeme y hagamos realidad tu proyecto.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://felipemr10.github.io/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=Saira+Condensed:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <header>
-        <img src="log-site-black-white2.svg" alt="Logo-sitio">
-        <div class="menu_bar">
-            <a href="#" class="bt-menu">
-                <i class="fa fa-bars"></i>
-            </a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="nav" id="top">
+    <a href="#inicio" class="brand" aria-label="Felipe Madrigal, ir al inicio">
+      <svg class="brand__braces" viewBox="0 0 128 150" aria-hidden="true">
+        <path d="M48 8 H34 Q24 8 24 18 V60 Q24 71 10 75 Q24 79 24 90 V132 Q24 142 34 142 H48"/>
+        <path d="M80 8 H94 Q104 8 104 18 V60 Q104 71 118 75 Q104 79 104 90 V132 Q104 142 94 142 H80"/>
+      </svg>
+      <span class="brand__text">
+        <span class="brand__name">FELIPE MADRIGAL</span>
+        <span class="brand__role">DESARROLLADOR DE SOFTWARE</span>
+      </span>
+    </a>
+    <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span>
+    </button>
+    <nav class="nav__menu" id="menu" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo trabajo</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contacto" class="nav__cta">Hablemos</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- INICIO -->
+    <section class="hero" id="inicio">
+      <div class="hero__inner">
+        <p class="eyebrow hero__eyebrow"><span class="dot"></span> Disponible para nuevos proyectos · Colombia</p>
+        <h1 class="hero__title">
+          <span class="line"><span class="line__in">Desarrollo de</span></span>
+          <span class="line"><span class="line__in">software profesional</span></span>
+          <span class="line"><span class="line__in accent">a tu alcance</span></span>
+        </h1>
+        <p class="hero__lead">Convierto tu idea en una página web, una tienda en línea, una app o un sistema a la medida. Con precios justos, comunicación directa y calidad probada.</p>
+        <div class="hero__actions">
+          <a class="btn btn--gold magnetic" href="https://wa.me/573187258853?text=Hola%20Felipe%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+            Cotiza por WhatsApp
+          </a>
+          <a class="btn btn--ghost magnetic" href="#servicios">Ver servicios</a>
         </div>
-        <ul id="dad" class="menu">
-            <li>Home</li>
-            <li>About</li>
-            <li>Skills</li>
-            <li>Portfolio</li>
-            <li>Services</li>
-            <li>Contact</li>
-        </ul>
-    </header>
-    <main>
-        <section id="home">
-            <h1 class="title-1">Welcome! </h1>
-            <p class="title-2"> I,m a <b>Web Developer</b></p>
-            <p class="info-1">I'm pleased to introduce myself as a passionate web developer specializing in front-end,
-                and I'm excited for the opportunity to join your team as a Junior Front-End Developer. My commitment is
-                to contribute my knowledge and skills at the service of your company, while continuing my professional
-                growth and development.</p>
-        </section>
+      </div>
 
-        <section >
-            <h2 id="about">About</h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fuga sapiente esse, laboriosam iusto porro, ad, illum consequatur dolorum excepturi possimus itaque obcaecati. Excepturi fugiat molestias nam distinctio commodi sit.
-        </section>
+      <div class="terminal" aria-hidden="true">
+        <div class="terminal__bar">
+          <span></span><span></span><span></span>
+          <em>tu-proyecto.js</em>
+        </div>
+        <pre class="terminal__body"><code id="typed"></code><span class="caret">▍</span></pre>
+      </div>
 
-        <section >
-            <h2 id="skills">Skills</h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fuga sapiente esse, laboriosam iusto porro, ad, illum consequatur dolorum excepturi possimus itaque obcaecati. Excepturi fugiat molestias nam distinctio commodi sit.
-        </section>
-        <section >
-            <h2 id="portfolio">Portfolio</h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fuga sapiente esse, laboriosam iusto porro, ad, illum consequatur dolorum excepturi possimus itaque obcaecati. Excepturi fugiat molestias nam distinctio commodi sit.
-        </section><section >
-            <h2 id="services">Services</h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fuga sapiente esse, laboriosam iusto porro, ad, illum consequatur dolorum excepturi possimus itaque obcaecati. Excepturi fugiat molestias nam distinctio commodi sit.
-        </section><section >
-            <h2 id="contact">Contact</h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fuga sapiente esse, laboriosam iusto porro, ad, illum consequatur dolorum excepturi possimus itaque obcaecati. Excepturi fugiat molestias nam distinctio commodi sit.
-        </section>
+      <a href="#servicios" class="scroll-hint" aria-label="Bajar a servicios">
+        <span>scroll</span>
+        <i></i>
+      </a>
+    </section>
 
+    <!-- CINTA -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Páginas web</span><b>{ }</b><span>eCommerce</span><b>{ }</b><span>Apps móviles</span><b>{ }</b><span>Plataformas</span><b>{ }</b><span>APIs</span><b>{ }</b><span>Inteligencia artificial</span><b>{ }</b><span>Pruebas QA</span><b>{ }</b>
+        <span>Páginas web</span><b>{ }</b><span>eCommerce</span><b>{ }</b><span>Apps móviles</span><b>{ }</b><span>Plataformas</span><b>{ }</b><span>APIs</span><b>{ }</b><span>Inteligencia artificial</span><b>{ }</b><span>Pruebas QA</span><b>{ }</b>
+      </div>
+    </div>
 
-    </main>
-    <footer><a href="https://wa.me/573187258853" target="_blank"><img src="wa-white.svg" alt=""></a></footer>
+    <!-- SERVICIOS -->
+    <section class="section" id="servicios">
+      <header class="section__head">
+        <p class="eyebrow">01 · Servicios</p>
+        <h2 class="section__title reveal-words">Lo que puedo construir para ti</h2>
+      </header>
+
+      <div class="services">
+        <article class="card">
+          <span class="card__num">01</span>
+          <svg class="card__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><line x1="3" y1="8" x2="21" y2="8"/><path d="M9 21h6"/><path d="M12 18v3"/></svg>
+          <h3>Web y eCommerce</h3>
+          <p>Páginas web, landing pages y tiendas en línea rápidas, que se ven bien en el celular y ayudan a vender.</p>
+        </article>
+        <article class="card">
+          <span class="card__num">02</span>
+          <svg class="card__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+          <h3>Apps y plataformas</h3>
+          <p>Apps móviles, plataformas web y sistemas a la medida: inventarios, agendamiento, facturación y lo que tu negocio necesite.</p>
+        </article>
+        <article class="card">
+          <span class="card__num">03</span>
+          <svg class="card__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 6h7"/><path d="M18 8.5v7"/><path d="M7.8 7.8l8.4 8.4"/></svg>
+          <h3>APIs e integraciones</h3>
+          <p>Conecto tus sistemas entre sí y automatizo procesos para que dejes de hacer a mano lo que una máquina puede hacer.</p>
+        </article>
+        <article class="card">
+          <span class="card__num">04</span>
+          <svg class="card__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3"/><rect x="5" y="6" width="14" height="12" rx="3"/><circle cx="9.5" cy="12" r="1"/><circle cx="14.5" cy="12" r="1"/><path d="M9 21h6"/></svg>
+          <h3>Inteligencia artificial</h3>
+          <p>Chatbots y agentes que atienden a tus clientes y se encargan de tareas repetitivas, las 24 horas.</p>
+        </article>
+        <article class="card">
+          <span class="card__num">05</span>
+          <svg class="card__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <h3>Calidad y soporte</h3>
+          <p>Pruebas de software (QA), mantenimiento y hosting para que tu proyecto funcione bien hoy y mañana.</p>
+        </article>
+        <a class="card card--cta" href="#contacto">
+          <span class="card__num">¿?</span>
+          <h3>¿Tienes otra idea?</h3>
+          <p>Cuéntamela. Si se puede construir con software, lo conversamos.</p>
+          <span class="card__arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section class="section" id="proceso">
+      <header class="section__head">
+        <p class="eyebrow">02 · Cómo trabajo</p>
+        <h2 class="section__title reveal-words">Simple, claro y sin sorpresas</h2>
+      </header>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step__dot"></span>
+          <span class="step__num">Paso 1</span>
+          <h3>Conversamos</h3>
+          <p>Me cuentas tu idea y lo que necesitas lograr. Sin tecnicismos.</p>
+        </li>
+        <li class="step">
+          <span class="step__dot"></span>
+          <span class="step__num">Paso 2</span>
+          <h3>Propuesta</h3>
+          <p>Te envío alcance, tiempos y precio por escrito, ajustados a tu presupuesto.</p>
+        </li>
+        <li class="step">
+          <span class="step__dot"></span>
+          <span class="step__num">Paso 3</span>
+          <h3>Desarrollo</h3>
+          <p>Construyo por etapas y te muestro avances para que opines en el camino.</p>
+        </li>
+        <li class="step">
+          <span class="step__dot"></span>
+          <span class="step__num">Paso 4</span>
+          <h3>Pruebas y lanzamiento</h3>
+          <p>Pruebo todo antes de publicar y te acompaño después con soporte.</p>
+        </li>
+      </ol>
+      <div class="steps__line" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section class="section about" id="sobre-mi">
+      <div class="about__text">
+        <p class="eyebrow">03 · Sobre mí</p>
+        <h2 class="section__title reveal-words">Desarrollador con ojo de QA</h2>
+        <p>Soy <strong>Felipe Madrigal</strong>, desarrollador de software en Colombia. Además de construir, trabajo como QA, es decir, en pruebas de calidad de software. Por eso no solo hago que tu proyecto funcione: me aseguro de que funcione bien.</p>
+        <p>Mi objetivo es que el software profesional deje de ser un lujo y esté al alcance de emprendedores, negocios y empresas de cualquier tamaño.</p>
+      </div>
+      <ul class="values">
+        <li><span>01</span><div><h3>Precio justo</h3><p>Propuestas a la medida de tu presupuesto.</p></div></li>
+        <li><span>02</span><div><h3>Calidad probada</h3><p>Cada entrega pasa por pruebas antes de llegarte.</p></div></li>
+        <li><span>03</span><div><h3>Trato directo</h3><p>Hablas conmigo, sin intermediarios.</p></div></li>
+        <li><span>04</span><div><h3>Acompañamiento</h3><p>Soporte y mantenimiento después del lanzamiento.</p></div></li>
+      </ul>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact" id="contacto">
+      <p class="eyebrow">04 · Contacto</p>
+      <h2 class="contact__title">
+        <span class="line"><span class="line__in">¿Hablamos de</span></span>
+        <span class="line"><span class="line__in accent">tu proyecto?</span></span>
+      </h2>
+      <p class="contact__lead">Escríbeme y te respondo con una propuesta clara.</p>
+      <div class="contact__links">
+        <a class="contact__item magnetic" href="https://wa.me/573187258853?text=Hola%20Felipe%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+          <span><small>WhatsApp</small>318 725 8853</span>
+        </a>
+        <a class="contact__item magnetic" href="mailto:felipemadrigal2318@gmail.com?subject=Cotizaci%C3%B3n%20de%20proyecto">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+          <span><small>Correo</small>felipemadrigal2318@gmail.com</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="#inicio" class="brand" aria-label="Felipe Madrigal, volver al inicio">
+      <svg class="brand__braces" viewBox="0 0 128 150" aria-hidden="true">
+        <path d="M48 8 H34 Q24 8 24 18 V60 Q24 71 10 75 Q24 79 24 90 V132 Q24 142 34 142 H48"/>
+        <path d="M80 8 H94 Q104 8 104 18 V60 Q104 71 118 75 Q104 79 104 90 V132 Q104 142 94 142 H80"/>
+      </svg>
+      <span class="brand__text">
+        <span class="brand__name">FELIPE MADRIGAL</span>
+        <span class="brand__role">DESARROLLADOR DE SOFTWARE</span>
+      </span>
+    </a>
+    <p>© <span id="year">2026</span> Felipe Madrigal · Desarrollo de software profesional a tu alcance</p>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/573187258853?text=Hola%20Felipe%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+  </a>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
 </body>
-
 </html>
