@@ -21,7 +21,19 @@
   toggle.addEventListener('click', function () { setMenu(!menu.classList.contains('is-open')); });
   menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
 
-  function onScroll() { nav.classList.toggle('is-scrolled', window.scrollY > 30); }
+  // El botón de WhatsApp sube cuando aparece el pie de página
+  var footer = document.querySelector('.footer');
+  var waFloat = document.querySelector('.wa-float');
+  function liftWhatsApp() {
+    var overlap = Math.max(0, window.innerHeight - footer.getBoundingClientRect().top);
+    waFloat.style.bottom = (22 + overlap) + 'px';
+  }
+
+  function onScroll() {
+    nav.classList.toggle('is-scrolled', window.scrollY > 30);
+    liftWhatsApp();
+  }
+  window.addEventListener('resize', liftWhatsApp);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
