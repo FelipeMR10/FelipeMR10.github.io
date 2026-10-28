@@ -101,8 +101,12 @@
     .from('.scroll-hint', { autoAlpha: 0 }, 1.6);
 
   // Parallax suave del hero al bajar
-  gsap.to('.terminal', { yPercent: -18, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.to('.hero__inner', { yPercent: 12, autoAlpha: .2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  // (solo en pantallas grandes: en celular el contenido va en una columna)
+  gsap.matchMedia().add('(min-width: 981px)', function () {
+    gsap.to('.terminal', { yPercent: -18, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.hero__inner', { yPercent: -10, autoAlpha: .15, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.scroll-hint__mouse, .scroll-hint span', { opacity: 0, y: 10, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=180', scrub: true } });
+  });
 
   // La cinta se acelera o frena según el scroll
   var marquee = document.querySelector('.marquee__track');
