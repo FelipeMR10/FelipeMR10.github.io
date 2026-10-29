@@ -62,7 +62,12 @@ svg { stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round
   transition: background .4s, border-color .4s, padding .4s;
   border-bottom: 1px solid transparent;
 }
-.nav.is-scrolled { background: rgba(18, 14, 10, .88); backdrop-filter: blur(10px); border-color: var(--line); padding-top: 12px; padding-bottom: 12px; }
+/* El desenfoque va en una capa aparte: si se pone en .nav, el menú móvil (fixed) queda encerrado en la barra */
+.nav::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(18, 14, 10, .88); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); opacity: 0; transition: opacity .4s; }
+.nav.is-scrolled::before { opacity: 1; }
+.nav.is-scrolled { border-color: var(--line); padding-top: 12px; padding-bottom: 12px; }
+.brand { position: relative; z-index: 60; }
+html.menu-open, html.menu-open body { overflow: hidden; }
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand__braces { width: 30px; height: 36px; color: var(--gold); stroke-width: 11; }
 .brand__text { display: flex; flex-direction: column; line-height: 1; }

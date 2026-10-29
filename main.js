@@ -16,9 +16,13 @@
     menu.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
-    document.body.style.overflow = open ? 'hidden' : '';
+    document.documentElement.classList.toggle('menu-open', open);
   }
   toggle.addEventListener('click', function () { setMenu(!menu.classList.contains('is-open')); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('is-open')) setMenu(false); });
+  // Bloquea el arrastre de la página detrás del menú abierto en pantallas táctiles
+  menu.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
+  window.matchMedia('(min-width: 761px)').addEventListener('change', function (e) { if (e.matches) setMenu(false); });
   menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
 
   // El botón de WhatsApp sube cuando aparece el pie de página
