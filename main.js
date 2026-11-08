@@ -77,6 +77,30 @@
     }, delay);
   }
 
+  /* ---------- Filtros de certificaciones ---------- */
+  var filters = document.querySelectorAll('.filter');
+  var certs = document.querySelectorAll('.cert');
+  filters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var cat = btn.dataset.filter;
+      filters.forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', String(on));
+      });
+      var shown = [];
+      certs.forEach(function (c) {
+        var match = cat === 'all' || c.dataset.cat === cat;
+        c.hidden = !match;
+        if (match) shown.push(c);
+      });
+      if (hasGsap && !reduce) {
+        gsap.fromTo(shown, { y: 18, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .5, stagger: .04, ease: 'power3.out', overwrite: true });
+      }
+      if (window.ScrollTrigger) ScrollTrigger.refresh();
+    });
+  });
+
   if (!hasGsap || reduce) {
     typeCode(0);
     return;
@@ -178,6 +202,27 @@
   // Sobre mí
   gsap.from('.about__text p:not(.eyebrow)', { y: 30, autoAlpha: 0, stagger: .15, scrollTrigger: { trigger: '.about', start: 'top 70%' } });
   gsap.from('.values li', { y: 40, autoAlpha: 0, stagger: .12, scrollTrigger: { trigger: '.values', start: 'top 80%' } });
+
+  // Skills: contadores, chips y certificados
+  document.querySelectorAll('.stat__num').forEach(function (el) {
+    var to = +el.dataset.count, from = +(el.dataset.from || 0), suffix = el.dataset.suffix || '';
+    var obj = { v: from };
+    el.textContent = from + suffix;
+    gsap.to(obj, {
+      v: to, duration: 2, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 85%' },
+      onUpdate: function () { el.textContent = Math.round(obj.v) + suffix; }
+    });
+  });
+  gsap.from('.stat', { y: 40, autoAlpha: 0, stagger: .12, scrollTrigger: { trigger: '.stats', start: 'top 85%' } });
+  gsap.utils.toArray('.skillgroup').forEach(function (g) {
+    gsap.from(g.querySelector('h3'), { y: 30, autoAlpha: 0, scrollTrigger: { trigger: g, start: 'top 85%' } });
+    gsap.from(g.querySelectorAll('.chips li'), { y: 20, scale: .8, autoAlpha: 0, stagger: .05, duration: .7, ease: 'back.out(2)', scrollTrigger: { trigger: g, start: 'top 80%' } });
+  });
+  gsap.from('.certs__title', { y: 30, autoAlpha: 0, scrollTrigger: { trigger: '.certs__title', start: 'top 88%' } });
+  gsap.utils.toArray('.cert').forEach(function (c) {
+    gsap.from(c, { y: 24, autoAlpha: 0, duration: .8, scrollTrigger: { trigger: c, start: 'top 92%' } });
+  });
 
   // Contacto
   gsap.from('.contact__title .line__in', { yPercent: 110, rotate: 3, stagger: .12, duration: 1.2, scrollTrigger: { trigger: '.contact', start: 'top 70%' } });
