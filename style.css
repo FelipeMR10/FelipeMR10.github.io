@@ -1,15 +1,15 @@
 :root {
-  --bg: #120e0a;
-  --bg-2: #1b140e;
-  --bg-3: #241a12;
-  --line: #4a3220;
-  --line-2: #8a5a32;
-  --cream: #f2e8d2;
-  --text: #d9cbb0;
-  --muted: #a8916f;
+  --bg: #0e0e10;
+  --bg-2: #161618;
+  --bg-3: #1f1f22;
+  --line: #2c2c31;
+  --line-2: #4b4b52;
+  --cream: #f5f5f3;
+  --text: #d2d2d6;
+  --muted: #a0a0a6;
   --gold: #d4ab55;
   --gold-2: #e6c477;
-  --copper: #c98448;
+  --copper: #c9a24a;
   --display: 'Saira Condensed', 'Arial Narrow', sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, monospace;
   --sans: 'IBM Plex Sans', system-ui, sans-serif;
@@ -63,7 +63,7 @@ svg { stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round
   border-bottom: 1px solid transparent;
 }
 /* El desenfoque va en una capa aparte: si se pone en .nav, el menú móvil (fixed) queda encerrado en la barra */
-.nav::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(18, 14, 10, .88); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); opacity: 0; transition: opacity .4s; }
+.nav::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(14, 14, 16, .88); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); opacity: 0; transition: opacity .4s; }
 .nav.is-scrolled::before { opacity: 1; }
 .nav.is-scrolled { border-color: var(--line); padding-top: 12px; padding-bottom: 12px; }
 .brand { position: relative; z-index: 60; }
@@ -108,7 +108,7 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 .hero__lead { max-width: 520px; font-size: clamp(16px, 1.4vw, 19px); color: var(--text); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
 
-.terminal { position: relative; z-index: 2; background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 6px; box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .8), inset 0 0 60px rgba(201, 132, 72, .05); overflow: hidden; }
+.terminal { position: relative; z-index: 2; background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 6px; box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .8), inset 0 0 60px rgba(212, 171, 85, .04); overflow: hidden; }
 .terminal__bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--bg-3); }
 .terminal__bar span { width: 10px; height: 10px; border-radius: 50%; background: var(--line-2); }
 .terminal__bar span:nth-child(2) { background: var(--copper); }
@@ -117,7 +117,7 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 .terminal__body { margin: 0; padding: 22px 22px 28px; min-height: 300px; font-family: var(--mono); font-size: 14px; line-height: 1.75; color: var(--text); white-space: pre-wrap; }
 .terminal__body .k { color: var(--copper); }
 .terminal__body .s { color: var(--gold); }
-.terminal__body .c { color: #7d6850; }
+.terminal__body .c { color: #6e6e74; }
 .caret { color: var(--gold); animation: blink 1s steps(2) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
