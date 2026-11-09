@@ -226,6 +226,7 @@
 
   // Contacto
   gsap.from('.contact__title .line__in', { yPercent: 110, rotate: 3, stagger: .12, duration: 1.2, scrollTrigger: { trigger: '.contact', start: 'top 70%' } });
+  gsap.from('.qr-card', { y: 50, rotate: -4, scale: .9, autoAlpha: 0, duration: 1.2, ease: 'back.out(1.6)', scrollTrigger: { trigger: '.contact', start: 'top 60%' } });
   gsap.from('.contact__lead, .contact__item', { y: 30, autoAlpha: 0, stagger: .12, scrollTrigger: { trigger: '.contact', start: 'top 60%' } });
 
   // Botón flotante de WhatsApp

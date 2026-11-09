@@ -219,7 +219,22 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 .contact .eyebrow { justify-content: center; }
 .contact__title { font-size: clamp(54px, 9vw, 128px); line-height: .92; margin: 24px 0; position: relative; }
 .contact__lead { color: var(--text); font-size: 19px; position: relative; }
-.contact__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 46px; position: relative; }
+.contact__grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; margin-top: 52px; position: relative; }
+.contact__links { display: flex; flex-direction: column; justify-content: center; gap: 16px; position: relative; }
+.qr-card { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 26px 26px 22px; background: var(--bg); border: 1px solid var(--line-2); border-radius: 2px; transition: border-color .4s, translate .4s; }
+.qr-card:hover { border-color: var(--gold); translate: 0 -4px; }
+.qr-card__frame { position: relative; padding: 14px; background: var(--cream); border-radius: 4px; overflow: hidden; }
+.qr-card__frame img { display: block; width: 210px; height: 210px; }
+.qr-card__scan { position: absolute; left: 0; right: 0; top: 0; height: 36px; background: linear-gradient(rgba(212, 171, 85, 0), rgba(212, 171, 85, .35) 80%, rgba(212, 171, 85, .9)); animation: scan 3.2s cubic-bezier(.6, 0, .4, 1) infinite; pointer-events: none; }
+@keyframes scan { 0% { transform: translateY(-40px); } 60%, 100% { transform: translateY(240px); } }
+.qr-card__corner { position: absolute; width: 18px; height: 18px; border: 2px solid var(--gold); }
+.qr-card__corner--tl { top: 4px; left: 4px; border-right: 0; border-bottom: 0; }
+.qr-card__corner--tr { top: 4px; right: 4px; border-left: 0; border-bottom: 0; }
+.qr-card__corner--bl { bottom: 4px; left: 4px; border-right: 0; border-top: 0; }
+.qr-card__corner--br { bottom: 4px; right: 4px; border-left: 0; border-top: 0; }
+.qr-card figcaption { display: flex; flex-direction: column; gap: 4px; max-width: 240px; font-size: 15px; line-height: 1.45; color: var(--text); }
+.qr-card figcaption small { font-family: var(--mono); font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); }
+@media (pointer: coarse), (max-width: 760px) { .qr-card { display: none; } }
 .contact__item { display: flex; align-items: center; gap: 16px; padding: 18px 28px; border: 1px solid var(--line-2); border-radius: 2px; background: var(--bg); text-align: left; transition: border-color .3s, background .3s; max-width: 100%; }
 .contact__item svg { width: 28px; height: 28px; color: var(--gold); flex-shrink: 0; }
 .contact__item span { display: flex; flex-direction: column; font-family: var(--mono); font-size: 16px; color: var(--cream); overflow-wrap: anywhere; }
