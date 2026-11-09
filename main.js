@@ -22,7 +22,7 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('is-open')) setMenu(false); });
   // Bloquea el arrastre de la página detrás del menú abierto en pantallas táctiles
   menu.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
-  window.matchMedia('(min-width: 761px)').addEventListener('change', function (e) { if (e.matches) setMenu(false); });
+  window.matchMedia('(min-width: 1061px)').addEventListener('change', function (e) { if (e.matches) setMenu(false); });
   menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
 
   // El botón de WhatsApp sube cuando aparece el pie de página
@@ -222,6 +222,21 @@
   gsap.from('.certs__title', { y: 30, autoAlpha: 0, scrollTrigger: { trigger: '.certs__title', start: 'top 88%' } });
   gsap.utils.toArray('.cert').forEach(function (c) {
     gsap.from(c, { y: 24, autoAlpha: 0, duration: .8, scrollTrigger: { trigger: c, start: 'top 92%' } });
+  });
+
+  // Proyectos
+  gsap.from('.project', { y: 60, autoAlpha: 0, duration: 1.1, scrollTrigger: { trigger: '.project', start: 'top 80%' } });
+  gsap.from('.project__body > *', { y: 24, autoAlpha: 0, stagger: .08, scrollTrigger: { trigger: '.project', start: 'top 75%' } });
+  var street = document.querySelector('.project__street');
+  if (street) {
+    var len = street.getTotalLength();
+    gsap.fromTo(street, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 1.8, ease: 'power2.inOut', scrollTrigger: { trigger: '.project__visual', start: 'top 80%' } });
+  }
+  gsap.to('.project__route', { strokeDashoffset: -180, duration: 6, ease: 'none', repeat: -1 });
+  gsap.from('.project__pin', { scale: 0, transformOrigin: 'center', stagger: .3, duration: .8, ease: 'back.out(2.5)', scrollTrigger: { trigger: '.project__visual', start: 'top 75%' } });
+  document.querySelectorAll('.project__stats b').forEach(function (el) {
+    var to = +el.textContent, obj = { v: 0 };
+    gsap.to(obj, { v: to, duration: 2, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%' }, onUpdate: function () { el.textContent = Math.round(obj.v); } });
   });
 
   // Contacto
