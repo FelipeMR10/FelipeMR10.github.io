@@ -1,3 +1,22 @@
+// Modo día / noche
+(function () {
+  var btn = document.querySelector('.theme-toggle');
+  if (!btn) return;
+  var root = document.documentElement;
+  var meta = document.querySelector('meta[name="theme-color"]');
+  function label(t) { btn.setAttribute('aria-label', t === 'light' ? 'Cambiar a modo noche' : 'Cambiar a modo día'); }
+  label(root.getAttribute('data-theme'));
+  btn.addEventListener('click', function () {
+    var t = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.classList.add('theme-anim');
+    root.setAttribute('data-theme', t);
+    if (meta) meta.setAttribute('content', t === 'light' ? '#f6f6f4' : '#0e0e10');
+    try { localStorage.setItem('tema', t); } catch (e) {}
+    label(t);
+    setTimeout(function () { root.classList.remove('theme-anim'); }, 500);
+  });
+})();
+
 (function () {
   'use strict';
 

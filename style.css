@@ -15,7 +15,33 @@
   --sans: 'IBM Plex Sans', system-ui, sans-serif;
   --pad: clamp(20px, 5vw, 72px);
   --max: 1240px;
+  --nav-bg: rgba(14, 14, 16, .88);
+  color-scheme: dark;
 }
+/* Modo día: blanco minimalista */
+html[data-theme='light'] {
+  --bg: #f6f6f4;
+  --bg-2: #ffffff;
+  --bg-3: #ededea;
+  --line: #e3e3de;
+  --line-2: #c8c8c2;
+  --cream: #141416;
+  --text: #3d3d43;
+  --muted: #6e6e74;
+  --gold: #a07a24;
+  --gold-2: #8a6819;
+  --copper: #a07a24;
+  --nav-bg: rgba(246, 246, 244, .9);
+  color-scheme: light;
+}
+html[data-theme='light'] .grain { opacity: .035; }
+html[data-theme='light'] .cursor-glow { mix-blend-mode: multiply; }
+html[data-theme='light'] .btn--gold { background: var(--cream); color: var(--bg); }
+html[data-theme='light'] .btn--gold:hover { background: var(--gold); }
+html[data-theme='light'] .qr-card__frame { background: #fff; box-shadow: inset 0 0 0 1px var(--line); }
+html[data-theme='light'] .terminal { box-shadow: 0 30px 70px -35px rgba(20, 20, 22, .35); }
+/* Transición suave solo al cambiar de tema */
+html.theme-anim, html.theme-anim * { transition: background-color .45s, color .45s, border-color .45s, fill .45s, stroke .45s !important; }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: hidden; overflow-x: clip; }
@@ -63,7 +89,7 @@ svg { stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round
   border-bottom: 1px solid transparent;
 }
 /* El desenfoque va en una capa aparte: si se pone en .nav, el menú móvil (fixed) queda encerrado en la barra */
-.nav::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(14, 14, 16, .88); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); opacity: 0; transition: opacity .4s; }
+.nav::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--nav-bg); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); opacity: 0; transition: opacity .4s; }
 .nav.is-scrolled::before { opacity: 1; }
 .nav.is-scrolled { border-color: var(--line); padding-top: 12px; padding-bottom: 12px; }
 .brand { position: relative; z-index: 60; }
@@ -80,7 +106,14 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 .nav__menu a:hover::after { transform: scaleX(1); transform-origin: left; }
 .nav__cta { border: 1px solid var(--gold); color: var(--gold) !important; padding: 10px 18px; border-radius: 2px; transition: background .3s, color .3s !important; }
 .nav__cta:hover { background: var(--gold); color: var(--bg) !important; }
-.nav__toggle { display: none; position: relative; z-index: 60; width: 44px; height: 44px; background: none; border: 1px solid var(--line-2); border-radius: 2px; cursor: pointer; }
+.nav__menu { order: 1; margin-left: auto; }
+.theme-toggle { order: 2; position: relative; z-index: 60; flex: none; width: 36px; height: 36px; display: grid; place-items: center; background: none; border: 0; padding: 0; color: var(--gold); cursor: pointer; transition: color .3s; }
+.theme-toggle:hover { color: var(--cream); }
+.theme-toggle svg { grid-area: 1 / 1; width: 18px; height: 18px; stroke-width: 1.4; transition: opacity .4s, scale .4s, rotate .5s; }
+.theme-toggle__moon { opacity: 0; scale: .4; rotate: -60deg; }
+html[data-theme='light'] .theme-toggle__sun { opacity: 0; scale: .4; rotate: 60deg; }
+html[data-theme='light'] .theme-toggle__moon { opacity: 1; scale: 1; rotate: 0deg; }
+.nav__toggle { order: 3; display: none; position: relative; z-index: 60; width: 44px; height: 44px; background: none; border: 1px solid var(--line-2); border-radius: 2px; cursor: pointer; }
 .nav__toggle span { position: absolute; left: 11px; right: 11px; height: 1.5px; background: var(--gold); transition: transform .4s, top .4s; }
 .nav__toggle span:first-child { top: 17px; }
 .nav__toggle span:last-child { top: 25px; }
@@ -312,6 +345,7 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 }
 @media (max-width: 1060px) {
   .nav__toggle { display: block; }
+  .theme-toggle { margin-left: auto; }
   .nav__menu { position: fixed; inset: 0; z-index: 55; flex-direction: column; justify-content: center; gap: 30px; font-size: 18px; background: var(--bg); clip-path: circle(0 at calc(100% - 42px) 40px); transition: clip-path .7s cubic-bezier(.7, 0, .2, 1); }
   .nav__menu.is-open { clip-path: circle(150% at calc(100% - 42px) 40px); }
   .scroll-hint { display: none; }
