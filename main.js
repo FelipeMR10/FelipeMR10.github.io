@@ -17,7 +17,7 @@
     var btn = document.createElement('button');
     btn.type='button'; btn.setAttribute('aria-pressed', ix===0?'true':'false');
     btn.innerHTML = ico(b.i)+'<span>'+b.n+'</span>';
-    btn.onclick = function(){ pick(ix); speak(b.n+'. '+b.g.map(function(x){return x[1]}).join('. ')); };
+    btn.onclick = function(){ pick(ix); };
     biz.appendChild(btn);
   });
   function pick(ix){
@@ -89,27 +89,30 @@
     nums.forEach(function(n){ io2.observe(n); });
   }
 
-  /* Voz: leer en voz alta */
-  var synth = window.speechSynthesis, current = null;
-  function voice(){ if(!synth) return null; var v = synth.getVoices(); return v.find(function(x){return /es[-_](CO|419|MX|US)/i.test(x.lang)}) || v.find(function(x){return /^es/i.test(x.lang)}) || null; }
-  function stop(){ if(synth) synth.cancel(); document.querySelectorAll('.say.on,#listenAll[aria-pressed="true"]').forEach(function(b){ b.classList.remove('on'); b.setAttribute('aria-pressed','false'); }); }
-  function speak(text, btn){
-    if(!synth){ return; }
-    stop(); var u = new SpeechSynthesisUtterance(text); u.lang='es-CO'; var v=voice(); if(v) u.voice=v; u.rate=.95;
-    if(btn){ btn.classList.add('on'); btn.setAttribute('aria-pressed','true'); u.onend = function(){ btn.classList.remove('on'); btn.setAttribute('aria-pressed','false'); }; }
-    synth.speak(u);
+  /* Sonido: apagado por defecto. El botón de arriba lo enciende o lo apaga para todo el sitio;
+     solo suenan los botones "Escuchar" de cada sección, y solo con el sonido encendido. */
+  var soundOn = false, player = new Audio(), playing = null;
+  var sound = document.getElementById('sound'), says = document.querySelectorAll('.say');
+  function stop(){ player.pause(); player.currentTime = 0; if(playing){ playing.classList.remove('on'); playing = null; } }
+  player.onended = function(){ if(playing){ playing.classList.remove('on'); playing = null; } };
+  function setSound(on){
+    soundOn = on; if(!on) stop();
+    sound.setAttribute('aria-pressed', on ? 'true' : 'false');
+    sound.querySelector('use').setAttribute('href', on ? '#i-speak' : '#i-mute');
+    sound.querySelector('.lbl').textContent = on ? 'Sonido encendido' : 'Sonido apagado';
+    says.forEach(function(b){ b.disabled = !on; b.title = on ? 'Escuchar esta sección' : 'Activá el sonido arriba para escuchar'; });
   }
-  document.querySelectorAll('.say').forEach(function(b){
-    b.onclick = function(){ if(b.classList.contains('on')){ stop(); return; } speak(b.closest('[data-say]').dataset.say, b); };
+  sound.onclick = function(){ setSound(!soundOn); };
+  says.forEach(function(b){
+    b.onclick = function(){
+      if(!soundOn) return;
+      if(playing === b){ stop(); return; }
+      stop(); player.src = b.closest('[data-audio]').dataset.audio;
+      playing = b; b.classList.add('on');
+      player.play().catch(function(){ stop(); });
+    };
   });
-  var all = document.getElementById('listenAll');
-  all.onclick = function(){
-    if(all.getAttribute('aria-pressed')==='true'){ stop(); return; }
-    var txt = 'Hola, soy Felipe Madrigal. Hago páginas, apps y asistentes con inteligencia artificial. Vendé más y ahorrá tiempo, desde tu celular. ' +
-      [].map.call(document.querySelectorAll('[data-say]'), function(s){ return s.dataset.say; }).join(' ');
-    speak(txt, all);
-  };
-  if(!synth){ document.querySelectorAll('.say,#listenAll').forEach(function(b){ b.hidden = true; }); }
+  setSound(false);
 
   /* Tema */
   document.getElementById('theme').onclick = function(){
