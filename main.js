@@ -110,11 +110,12 @@
       if(MALE.test(id)) s += 10;
       if(FEMALE.test(id)) s -= 10;
       if(/natural|online|neural|premium|enhanced|mejorad/i.test(id)) s += 3;
-      if(/es[-_]CO/i.test(x.lang)) s += 3; else if(/es[-_](419|MX|US)/i.test(x.lang)) s += 2;
+      /* Acento: primero Colombia, luego el resto de Latinoamérica; España de último */
+      if(/es[-_]CO/i.test(x.lang)) s += 25; else if(/es[-_](419|MX|US|AR|CL|PE|VE|EC)/i.test(x.lang)) s += 22;
       return s;
     };
     var best = voices.slice().sort(function(a,b){ return score(b) - score(a); })[0] || null;
-    return best ? { voice: best, male: score(best) >= 10 } : null;
+    return best ? { voice: best, male: MALE.test(best.name + ' ' + (best.voiceURI || '')) && !FEMALE.test(best.name + ' ' + (best.voiceURI || '')) } : null;
   }
   function stop(){ if(synth) synth.cancel(); if(playing){ playing.classList.remove('on'); playing = null; } }
   function setSound(on){
