@@ -105,7 +105,7 @@
   var all = document.getElementById('listenAll');
   all.onclick = function(){
     if(all.getAttribute('aria-pressed')==='true'){ stop(); return; }
-    var txt = 'Hola, soy Felipe Madrigal. Hago páginas, apps y asistentes con inteligencia artificial para que vendás más y trabajés menos. ' +
+    var txt = 'Hola, soy Felipe Madrigal. Hago páginas, apps y asistentes con inteligencia artificial. Vendé más y ahorrá tiempo, desde tu celular. ' +
       [].map.call(document.querySelectorAll('[data-say]'), function(s){ return s.dataset.say; }).join(' ');
     speak(txt, all);
   };
