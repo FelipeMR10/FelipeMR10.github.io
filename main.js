@@ -94,17 +94,27 @@
      Usa la voz del dispositivo: se prefiere una voz masculina natural en español latino. */
   var synth = window.speechSynthesis, soundOn = false, playing = null;
   var sound = document.getElementById('sound'), says = document.querySelectorAll('.say');
+  /* Voces masculinas conocidas en español:
+     iPhone/Mac: Carlos (Colombia), Juan (México), Diego (Argentina), Jorge (España), Eddy, Reed, Rocko.
+     Windows/Edge: Gonzalo (Colombia), Jorge y Raúl (México), Álvaro y Pablo (España).
+     Android/Google: voces con código esd/esf (EE. UU.) o eed/eee (España). */
+  var MALE = /\b(carlos|juan|diego|jorge|eddy|reed|rocko|gonzalo|ra[uú]l|[aá]lvaro|pablo|alonso|tom[aá]s|lorenzo|enrique|male|hombre|masculin[oa])\b|-x-(esd|esf|eed|eee)/i;
+  var FEMALE = /\b(soledad|m[oó]nica|paulina|marisol|ang[eé]lica|isabela|francisca|luciana|sabina|helena|laura|salom[eé]|dalia|elvira|paloma|female|mujer|femenin[oa])\b|-x-(esc|eea|eec|eef)/i;
+  var voices = [];
+  function loadVoices(){ if(synth) voices = synth.getVoices().filter(function(x){ return /^es/i.test(x.lang); }); }
+  if(synth){ loadVoices(); if('onvoiceschanged' in synth) synth.addEventListener('voiceschanged', loadVoices); }
   function pickVoice(){
-    if(!synth) return null;
-    var v = synth.getVoices().filter(function(x){ return /^es/i.test(x.lang); });
+    if(!voices.length) loadVoices();
     var score = function(x){
-      var n = x.name, s = 0;
-      if(/natural|online|neural|premium|enhanced/i.test(n)) s += 4;
-      if(/gonzalo|jorge|raul|ra\u00fal|pablo|alvaro|\u00e1lvaro|diego|juan|carlos|andr|male|hombre/i.test(n)) s += 3;
+      var id = x.name + ' ' + (x.voiceURI || ''), s = 0;
+      if(MALE.test(id)) s += 10;
+      if(FEMALE.test(id)) s -= 10;
+      if(/natural|online|neural|premium|enhanced|mejorad/i.test(id)) s += 3;
       if(/es[-_]CO/i.test(x.lang)) s += 3; else if(/es[-_](419|MX|US)/i.test(x.lang)) s += 2;
       return s;
     };
-    return v.sort(function(a,b){ return score(b) - score(a); })[0] || null;
+    var best = voices.slice().sort(function(a,b){ return score(b) - score(a); })[0] || null;
+    return best ? { voice: best, male: score(best) >= 10 } : null;
   }
   function stop(){ if(synth) synth.cancel(); if(playing){ playing.classList.remove('on'); playing = null; } }
   function setSound(on){
@@ -121,8 +131,10 @@
       if(playing === b){ stop(); return; }
       stop();
       var u = new SpeechSynthesisUtterance(b.closest('[data-say]').dataset.say);
-      u.lang = 'es-CO'; var v = pickVoice(); if(v) u.voice = v;
-      u.rate = .95; u.pitch = .9;
+      u.lang = 'es-CO'; var v = pickVoice(); if(v){ u.voice = v.voice; u.lang = v.voice.lang; }
+      u.rate = .95;
+      /* Si no hay voz de hombre instalada, se baja un poco el tono para que suene más grave */
+      u.pitch = (v && v.male) ? .9 : .75;
       u.onend = u.onerror = function(){ if(playing === b){ b.classList.remove('on'); playing = null; } };
       playing = b; b.classList.add('on'); synth.speak(u);
     };
