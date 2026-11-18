@@ -90,11 +90,23 @@
   }
 
   /* Sonido: apagado por defecto. El botón de arriba lo enciende o lo apaga para todo el sitio;
-     solo suenan los botones "Escuchar" de cada sección, y solo con el sonido encendido. */
-  var soundOn = false, player = new Audio(), playing = null;
+     solo suenan los botones de escuchar de cada sección, y solo con el sonido encendido.
+     Usa la voz del dispositivo: se prefiere una voz masculina natural en español latino. */
+  var synth = window.speechSynthesis, soundOn = false, playing = null;
   var sound = document.getElementById('sound'), says = document.querySelectorAll('.say');
-  function stop(){ player.pause(); player.currentTime = 0; if(playing){ playing.classList.remove('on'); playing = null; } }
-  player.onended = function(){ if(playing){ playing.classList.remove('on'); playing = null; } };
+  function pickVoice(){
+    if(!synth) return null;
+    var v = synth.getVoices().filter(function(x){ return /^es/i.test(x.lang); });
+    var score = function(x){
+      var n = x.name, s = 0;
+      if(/natural|online|neural|premium|enhanced/i.test(n)) s += 4;
+      if(/gonzalo|jorge|raul|ra\u00fal|pablo|alvaro|\u00e1lvaro|diego|juan|carlos|andr|male|hombre/i.test(n)) s += 3;
+      if(/es[-_]CO/i.test(x.lang)) s += 3; else if(/es[-_](419|MX|US)/i.test(x.lang)) s += 2;
+      return s;
+    };
+    return v.sort(function(a,b){ return score(b) - score(a); })[0] || null;
+  }
+  function stop(){ if(synth) synth.cancel(); if(playing){ playing.classList.remove('on'); playing = null; } }
   function setSound(on){
     soundOn = on; if(!on) stop();
     sound.setAttribute('aria-pressed', on ? 'true' : 'false');
@@ -105,13 +117,17 @@
   sound.onclick = function(){ setSound(!soundOn); };
   says.forEach(function(b){
     b.onclick = function(){
-      if(!soundOn) return;
+      if(!soundOn || !synth) return;
       if(playing === b){ stop(); return; }
-      stop(); player.src = b.closest('[data-audio]').dataset.audio;
-      playing = b; b.classList.add('on');
-      player.play().catch(function(){ stop(); });
+      stop();
+      var u = new SpeechSynthesisUtterance(b.closest('[data-say]').dataset.say);
+      u.lang = 'es-CO'; var v = pickVoice(); if(v) u.voice = v;
+      u.rate = .95; u.pitch = .9;
+      u.onend = u.onerror = function(){ if(playing === b){ b.classList.remove('on'); playing = null; } };
+      playing = b; b.classList.add('on'); synth.speak(u);
     };
   });
+  if(!synth){ sound.hidden = true; says.forEach(function(b){ b.hidden = true; }); }
   setSound(false);
 
   /* Tema */
