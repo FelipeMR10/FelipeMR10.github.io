@@ -30,9 +30,6 @@
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4a8.5 8.5 0 1 1 3.3 3l-4.6 1z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.5-2-1.5-2.5-2.5l.8-1-1-2L9.3 8z"/></symbol>
-      <symbol id="i-speak" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></symbol>
-      <symbol id="i-listen" viewBox="0 0 24 24"><g transform="translate(2.5 0)"><path d="M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a3.5 3.5 0 1 1-7 0"/><path d="M15 8.5a2.5 2.5 0 0 0-5 0v1a2 2 0 1 1 0 4"/></g><path d="M4.6 7.2a5 5 0 0 0 0 6.6"/><path d="M1.8 4.8a9 9 0 0 0 0 11.4"/></symbol>
-      <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9.5l5 5M22 9.5l-5 5"/></symbol>
       <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
       <symbol id="i-shop" viewBox="0 0 24 24"><path d="M4 10v10h16V10"/><path d="M3 10l2-6h14l2 6"/><path d="M3 10c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3"/><path d="M10 20v-5h4v5"/></symbol>
       <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
@@ -73,7 +70,6 @@
         <svg viewBox="0 0 128 150" aria-hidden="true"><path d="M48 8 H34 Q24 8 24 18 V60 Q24 71 10 75 Q24 79 24 90 V132 Q24 142 34 142 H48"/><path d="M80 8 H94 Q104 8 104 18 V60 Q104 71 118 75 Q104 79 104 90 V132 Q104 142 94 142 H80"/></svg>
         <span><b>FELIPE MADRIGAL</b><small>SOFTWARE A TU ALCANCE</small></span>
       </a>
-      <button class="iconbtn" id="sound" type="button" aria-pressed="false" title="Activar o apagar el sonido del sitio"><svg class="i"><use href="#i-mute"/></svg><span class="lbl">Sonido apagado</span></button>
       <button class="iconbtn" id="theme" type="button" title="Modo día / noche" aria-label="Cambiar modo día o noche"><svg class="i"><use href="#i-sun"/></svg></button>
     </div>
   </header>
@@ -117,11 +113,10 @@
     </div>
 
     <!-- QUÉ NEGOCIO TENÉS -->
-    <section id="negocio" data-say="¿Qué negocio tenés? Tocá el dibujo de tu negocio y te muestro cómo te puedo ayudar.">
+    <section id="negocio">
       <div class="wrap">
         <div class="head">
           <div><p class="tag">Para vos</p><h2>¿Qué negocio tenés?</h2></div>
-          <button class="say" type="button" disabled aria-label="Escuchar esta sección" title="Activá el sonido arriba para escuchar"><svg class="i"><use href="#i-listen"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
         </div>
         <div class="biz" role="group" aria-label="Elegí tu tipo de negocio" id="biz"></div>
         <div class="gain" id="gain" aria-live="polite"></div>
@@ -129,22 +124,20 @@
     </section>
 
     <!-- SERVICIOS -->
-    <section class="band" id="servicios" data-say="Lo que hago. Asistentes con inteligencia artificial que atienden a tus clientes. Revisar que todo funcione bien. Páginas y tiendas en internet. Apps a tu medida. Y conectar tus programas para que trabajen solos.">
+    <section class="band" id="servicios">
       <div class="wrap">
         <div class="head">
           <div><p class="tag">Servicios</p><h2>Lo que hago</h2></div>
-          <button class="say" type="button" disabled aria-label="Escuchar esta sección" title="Activá el sonido arriba para escuchar"><svg class="i"><use href="#i-listen"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
         </div>
         <div class="svc" id="svc"></div>
       </div>
     </section>
 
     <!-- CÓMO TRABAJO -->
-    <section id="proceso" data-say="Así trabajamos. Uno: hablamos. Dos: te mando el precio por escrito. Tres: lo construyo y te muestro avances. Cuatro: lo pruebo, lo lanzamos y te sigo acompañando.">
+    <section id="proceso">
       <div class="wrap">
         <div class="head">
           <div><p class="tag">Cómo trabajo</p><h2>4 pasos, sin enredos</h2></div>
-          <button class="say" type="button" disabled aria-label="Escuchar esta sección" title="Activá el sonido arriba para escuchar"><svg class="i"><use href="#i-listen"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
         </div>
         <ol class="steps">
           <li class="reveal"><div class="ic"><svg class="i"><use href="#i-chat"/></svg><b>1</b></div><h3>Hablamos</h3><p>Me contás tu idea, con tus palabras.</p></li>
@@ -156,11 +149,10 @@
     </section>
 
     <!-- POR QUÉ -->
-    <section style="padding-top:0" data-say="Por qué conmigo. Precio justo. Todo probado antes de entregarlo. Hablás directo conmigo. Y te acompaño después.">
+    <section style="padding-top:0">
       <div class="wrap">
         <div class="head">
           <div><p class="tag">Por qué conmigo</p><h2>Desarrollador con ojo de calidad</h2></div>
-          <button class="say" type="button" disabled aria-label="Escuchar esta sección" title="Activá el sonido arriba para escuchar"><svg class="i"><use href="#i-listen"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
         </div>
         <div class="why">
           <div class="reveal"><span><svg class="i"><use href="#i-money"/></svg></span><p><b>Precio justo</b><small>A la medida de tu bolsillo</small></p></div>
@@ -172,11 +164,10 @@
     </section>
 
     <!-- PROYECTO -->
-    <section style="padding-top:0" id="proyecto" data-say="Lo que estoy construyendo. Una app para mandar un paquete, hacer una compra o una fila, y seguir el servicio en el mapa. A tu negocio le sirve para hacer domicilios con mapa en vivo, cobrar en línea y manejar todo desde un panel.">
+    <section style="padding-top:0" id="proyecto">
       <div class="wrap">
         <div class="head">
           <div><p class="tag">Mi proyecto</p><h2>Lo que estoy construyendo</h2></div>
-          <button class="say" type="button" disabled aria-label="Escuchar esta sección" title="Activá el sonido arriba para escuchar"><svg class="i"><use href="#i-listen"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
         </div>
         <div class="proj reveal">
           <div>
@@ -220,7 +211,7 @@
     </section>
 
     <!-- CONTACTO -->
-    <section class="band contact" id="contacto" data-say="¿Hablamos? Tocá el botón verde y escribime por WhatsApp. Mi número es 318 725 8853.">
+    <section class="band contact" id="contacto">
       <div class="wrap">
         <div>
           <p class="tag">Contacto</p>
@@ -228,7 +219,6 @@
           <p>Te respondo con una propuesta clara, sin compromiso.</p>
           <a class="btn-wa big-wa" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribime por WhatsApp</a>
           <p class="phone-num">318 725 8853</p>
-          <div style="margin-top:18px"><button class="say" type="button" disabled aria-label="Escuchar esta sección" title="Activá el sonido arriba para escuchar"><svg class="i"><use href="#i-listen"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button></div>
         </div>
         <div class="qr">
           <img src="qr-whatsapp.svg" width="450" height="450" alt="Código QR para escribir a Felipe Madrigal por WhatsApp">

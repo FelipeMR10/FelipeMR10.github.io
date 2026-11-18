@@ -89,60 +89,6 @@
     nums.forEach(function(n){ io2.observe(n); });
   }
 
-  /* Sonido: apagado por defecto. El botón de arriba lo enciende o lo apaga para todo el sitio;
-     solo suenan los botones de escuchar de cada sección, y solo con el sonido encendido.
-     Usa la voz del dispositivo: se prefiere una voz masculina natural en español latino. */
-  var synth = window.speechSynthesis, soundOn = false, playing = null;
-  var sound = document.getElementById('sound'), says = document.querySelectorAll('.say');
-  /* Voces masculinas conocidas en español:
-     iPhone/Mac: Carlos (Colombia), Juan (México), Diego (Argentina), Jorge (España), Eddy, Reed, Rocko.
-     Windows/Edge: Gonzalo (Colombia), Jorge y Raúl (México), Álvaro y Pablo (España).
-     Android/Google: voces con código esd/esf (EE. UU.) o eed/eee (España). */
-  var MALE = /\b(carlos|juan|diego|jorge|eddy|reed|rocko|gonzalo|ra[uú]l|[aá]lvaro|pablo|alonso|tom[aá]s|lorenzo|enrique|male|hombre|masculin[oa])\b|-x-(esd|esf|eed|eee)/i;
-  var FEMALE = /\b(soledad|m[oó]nica|paulina|marisol|ang[eé]lica|isabela|francisca|luciana|sabina|helena|laura|salom[eé]|dalia|elvira|paloma|female|mujer|femenin[oa])\b|-x-(esc|eea|eec|eef)/i;
-  var voices = [];
-  function loadVoices(){ if(synth) voices = synth.getVoices().filter(function(x){ return /^es/i.test(x.lang); }); }
-  if(synth){ loadVoices(); if('onvoiceschanged' in synth) synth.addEventListener('voiceschanged', loadVoices); }
-  function pickVoice(){
-    if(!voices.length) loadVoices();
-    var score = function(x){
-      var id = x.name + ' ' + (x.voiceURI || ''), s = 0;
-      if(MALE.test(id)) s += 10;
-      if(FEMALE.test(id)) s -= 10;
-      if(/natural|online|neural|premium|enhanced|mejorad/i.test(id)) s += 3;
-      /* Acento: primero Colombia, luego el resto de Latinoamérica; España de último */
-      if(/es[-_]CO/i.test(x.lang)) s += 25; else if(/es[-_](419|MX|US|AR|CL|PE|VE|EC)/i.test(x.lang)) s += 22;
-      return s;
-    };
-    var best = voices.slice().sort(function(a,b){ return score(b) - score(a); })[0] || null;
-    return best ? { voice: best, male: MALE.test(best.name + ' ' + (best.voiceURI || '')) && !FEMALE.test(best.name + ' ' + (best.voiceURI || '')) } : null;
-  }
-  function stop(){ if(synth) synth.cancel(); if(playing){ playing.classList.remove('on'); playing = null; } }
-  function setSound(on){
-    soundOn = on; if(!on) stop();
-    sound.setAttribute('aria-pressed', on ? 'true' : 'false');
-    sound.querySelector('use').setAttribute('href', on ? '#i-speak' : '#i-mute');
-    sound.querySelector('.lbl').textContent = on ? 'Sonido encendido' : 'Sonido apagado';
-    says.forEach(function(b){ b.disabled = !on; b.title = on ? 'Escuchar esta sección' : 'Activá el sonido arriba para escuchar'; });
-  }
-  sound.onclick = function(){ setSound(!soundOn); };
-  says.forEach(function(b){
-    b.onclick = function(){
-      if(!soundOn || !synth) return;
-      if(playing === b){ stop(); return; }
-      stop();
-      var u = new SpeechSynthesisUtterance(b.closest('[data-say]').dataset.say);
-      u.lang = 'es-CO'; var v = pickVoice(); if(v){ u.voice = v.voice; u.lang = v.voice.lang; }
-      u.rate = .95;
-      /* Si no hay voz de hombre instalada, se baja un poco el tono para que suene más grave */
-      u.pitch = (v && v.male) ? .9 : .75;
-      u.onend = u.onerror = function(){ if(playing === b){ b.classList.remove('on'); playing = null; } };
-      playing = b; b.classList.add('on'); synth.speak(u);
-    };
-  });
-  if(!synth){ sound.hidden = true; says.forEach(function(b){ b.hidden = true; }); }
-  setSound(false);
-
   /* Tema */
   document.getElementById('theme').onclick = function(){
     var r = document.documentElement, cur = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light');
