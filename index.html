@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Felipe Madrigal · Desarrollo de software profesional a tu alcance</title>
   <meta name="description" content="Páginas web, tiendas en línea, apps y asistentes con inteligencia artificial. Vendé más y ahorrá tiempo, desde tu celular. Felipe Madrigal, Medellín, Colombia.">
-  <meta name="theme-color" content="#f6f6f4">
+  <meta name="theme-color" content="#f2ede3">
   <script>
     /* Tema antes de pintar para evitar parpadeo: lo elegido, o el del dispositivo */
     (function () {
@@ -14,7 +14,7 @@
       if (t !== 'light' && t !== 'dark') t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', t);
       document.documentElement.classList.add('js');
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', t === 'light' ? '#f6f6f4' : '#0e0e10');
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', t === 'light' ? '#f2ede3' : '#0e0e10');
     })();
   </script>
   <meta property="og:title" content="Felipe Madrigal · Desarrollo de software profesional a tu alcance">
@@ -22,9 +22,9 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://felipemr10.github.io/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Saira+Condensed:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -64,63 +64,69 @@
     </defs>
   </svg>
 
-
   <header class="nav">
     <div class="wrap">
       <a class="brand" href="#inicio" aria-label="Felipe Madrigal, inicio">
         <svg viewBox="0 0 128 150" aria-hidden="true"><path d="M48 8 H34 Q24 8 24 18 V60 Q24 71 10 75 Q24 79 24 90 V132 Q24 142 34 142 H48"/><path d="M80 8 H94 Q104 8 104 18 V60 Q104 71 118 75 Q104 79 104 90 V132 Q104 142 94 142 H80"/></svg>
-        <span><b>FELIPE MADRIGAL</b><small>SOFTWARE A TU ALCANCE</small></span>
+        <span><b>Felipe Madrigal</b><small>Software a tu alcance</small></span>
       </a>
       <nav class="links" aria-label="Secciones">
         <a href="#servicios">Servicios</a>
         <a href="#proceso">Cómo trabajo</a>
         <a href="#proyecto">Proyecto</a>
         <a href="#contacto">Contacto</a>
-        <i class="pill" aria-hidden="true"></i>
       </nav>
       <button class="iconbtn" id="theme" type="button" title="Modo día / noche" aria-label="Cambiar modo día o noche"><svg class="i"><use href="#i-sun"/></svg></button>
     </div>
   </header>
 
   <main id="inicio">
-    <!-- HÉROE -->
-    <div class="hero">
+    <!-- PORTADA -->
+    <section class="hero">
       <div class="wrap">
-        <div>
-          <p class="tag">Medellín · Colombia</p>
-          <h1 style="margin-top:14px" class="words"><span>Tu</span> <span>negocio,</span><br><em><span>más</span> <span>fácil</span></em><br><span>con</span> <span>tecnología</span></h1>
-          <p class="lead">Hago páginas, apps y asistentes con inteligencia artificial. Vendé más y ahorrá tiempo, desde tu celular.</p>
-          <div class="actions">
-            <a class="btn-wa" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribime por WhatsApp<span class="go" aria-hidden="true">→</span></a>
-          </div>
-          <div class="pics" aria-label="Tu negocio, en el celular, vende más">
-            <div class="pic"><span><svg class="i"><use href="#i-shop"/></svg></span>Tu negocio</div>
-            <div class="arrow" aria-hidden="true">→</div>
-            <div class="pic"><span><svg class="i"><use href="#i-phone"/></svg></span>En el celular</div>
-            <div class="arrow" aria-hidden="true">→</div>
-            <div class="pic"><span><svg class="i"><use href="#i-money"/></svg></span>Más ventas</div>
-          </div>
+        <div class="masthead">
+          <span>Medellín · Colombia</span>
+          <span class="mid">Edición 2026</span>
+          <span>Software a tu alcance</span>
         </div>
 
-        <div style="position:relative;justify-self:center;width:min(300px,100%)">
-          <div class="phone" aria-label="Ejemplo: un cliente pide por WhatsApp y el asistente responde solo">
-            <div class="screen">
-              <header><i></i>Frutas Don Jorge<small style="margin-left:auto;opacity:.6;font-weight:500">en línea</small></header>
-              <div class="chat" id="chat"></div>
-            </div>
+        <h1 class="words">
+          <span>Tu</span> <span>negocio,</span><br>
+          <em><span>más</span> <span>fácil</span></em><br>
+          <span>con</span> <span>tecnología</span>
+        </h1>
+
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="lead">Hago páginas, apps y asistentes con inteligencia artificial. Vendé más y ahorrá tiempo, desde tu celular.</p>
+            <a class="btn-wa" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribime por WhatsApp<span class="go" aria-hidden="true">→</span></a>
+            <ol class="pics" aria-label="Tu negocio, en el celular, vende más">
+              <li><svg class="i"><use href="#i-shop"/></svg>Tu negocio</li>
+              <li><svg class="i"><use href="#i-phone"/></svg>En el celular</li>
+              <li><svg class="i"><use href="#i-money"/></svg>Más ventas</li>
+            </ol>
           </div>
-          <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
-            <defs><path id="circ" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
-            <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="1"/>
-            <circle cx="60" cy="60" r="33" fill="none" stroke="currentColor" stroke-width="1"/>
-            <text><textPath href="#circ">Calidad probada · Trato directo · </textPath></text>
-            <g transform="translate(47 44) scale(.2)" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"><path d="M48 8 H34 Q24 8 24 18 V60 Q24 71 10 75 Q24 79 24 90 V132 Q24 142 34 142 H48"/><path d="M80 8 H94 Q104 8 104 18 V60 Q104 71 118 75 Q104 79 104 90 V132 Q104 142 94 142 H80"/></g>
-          </svg>
+
+          <div class="hero-phone">
+            <div class="phone" aria-label="Ejemplo: un cliente pide por WhatsApp y el asistente responde solo">
+              <div class="screen">
+                <header><i></i>Frutas Don Jorge<small style="margin-left:auto;opacity:.6;font-weight:500">en línea</small></header>
+                <div class="chat" id="chat"></div>
+              </div>
+            </div>
+            <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
+              <defs><path id="circ" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
+              <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="1"/>
+              <circle cx="60" cy="60" r="33" fill="none" stroke="currentColor" stroke-width="1"/>
+              <text><textPath href="#circ">Calidad probada · Trato directo · </textPath></text>
+              <g transform="translate(47 44) scale(.2)" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"><path d="M48 8 H34 Q24 8 24 18 V60 Q24 71 10 75 Q24 79 24 90 V132 Q24 142 34 142 H48"/><path d="M80 8 H94 Q104 8 104 18 V60 Q104 71 118 75 Q104 79 104 90 V132 Q104 142 94 142 H80"/></g>
+            </svg>
+            <p class="caption">Fig. 1 — Un cliente pide y el asistente responde solo.</p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- CINTA -->
     <div class="ticker" aria-hidden="true">
       <div class="track">
         <span>Páginas web</span><span>Tiendas en línea</span><span>Apps a tu medida</span><span>Asistentes con IA</span><span>Pruebas de calidad</span><span>Automatizaciones</span>
@@ -128,67 +134,85 @@
       </div>
     </div>
 
-    <!-- QUÉ NEGOCIO TENÉS -->
-    <section id="negocio">
+    <!-- 01 NEGOCIO -->
+    <section class="chapter" id="negocio">
       <div class="wrap">
-        <div class="head">
-          <div><p class="tag">Para vos</p><h2>¿Qué negocio tenés?</h2></div>
-        </div>
-        <div class="biz" role="group" aria-label="Elegí tu tipo de negocio" id="biz"></div>
-        <div class="gain" id="gain" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <!-- SERVICIOS -->
-    <section class="band" id="servicios">
-      <div class="wrap">
-        <div class="head">
-          <div><p class="tag">Servicios</p><h2>Lo que hago</h2></div>
-        </div>
-        <div class="svc" id="svc"></div>
-      </div>
-    </section>
-
-    <!-- CÓMO TRABAJO -->
-    <section id="proceso">
-      <div class="wrap">
-        <div class="head">
-          <div><p class="tag">Cómo trabajo</p><h2>4 pasos, sin enredos</h2></div>
-        </div>
-        <ol class="steps"><i class="line" aria-hidden="true"></i>
-          <li class="reveal"><div class="ic"><svg class="i"><use href="#i-chat"/></svg><b>1</b></div><h3>Hablamos</h3><p>Me contás tu idea, con tus palabras.</p></li>
-          <li class="reveal"><div class="ic"><svg class="i"><use href="#i-doc"/></svg><b>2</b></div><h3>Precio claro</h3><p>Te mando qué hago, cuándo y cuánto cuesta.</p></li>
-          <li class="reveal"><div class="ic"><svg class="i"><use href="#i-build"/></svg><b>3</b></div><h3>Lo construyo</h3><p>Te muestro avances y opinás en el camino.</p></li>
-          <li class="reveal"><div class="ic"><svg class="i"><use href="#i-rocket"/></svg><b>4</b></div><h3>Lanzamos</h3><p>Pruebo todo y te sigo acompañando.</p></li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- POR QUÉ -->
-    <section style="padding-top:0">
-      <div class="wrap">
-        <div class="head">
-          <div><p class="tag">Por qué conmigo</p><h2>Desarrollador con ojo de calidad</h2></div>
-        </div>
-        <div class="why">
-          <div class="reveal"><span><svg class="i"><use href="#i-money"/></svg></span><p><b>Precio justo</b><small>A la medida de tu bolsillo</small></p></div>
-          <div class="reveal"><span><svg class="i"><use href="#i-shield"/></svg></span><p><b>Todo probado</b><small>Más de 6 años revisando software</small></p></div>
-          <div class="reveal"><span><svg class="i"><use href="#i-hand"/></svg></span><p><b>Trato directo</b><small>Hablás conmigo, sin intermediarios</small></p></div>
-          <div class="reveal"><span><svg class="i"><use href="#i-clock"/></svg></span><p><b>Te acompaño</b><small>Soporte después de entregar</small></p></div>
+        <header class="ch-head reveal">
+          <span class="no">01</span>
+          <p class="tag">Para vos</p>
+          <h2>¿Qué negocio <em>tenés?</em></h2>
+        </header>
+        <div class="ch-body">
+          <div class="biz" role="group" aria-label="Elegí tu tipo de negocio" id="biz"></div>
+          <div class="gain" id="gain" aria-live="polite"></div>
         </div>
       </div>
     </section>
 
-    <!-- PROYECTO -->
-    <section style="padding-top:0" id="proyecto">
+    <!-- 02 SERVICIOS -->
+    <section class="chapter band" id="servicios">
       <div class="wrap">
-        <div class="head">
-          <div><p class="tag">Mi proyecto</p><h2>Lo que estoy construyendo</h2></div>
+        <header class="ch-head reveal">
+          <span class="no">02</span>
+          <p class="tag">Servicios</p>
+          <h2>Lo que <em>hago</em></h2>
+        </header>
+        <div class="ch-body">
+          <ul class="svc" id="svc"></ul>
         </div>
-        <div class="proj reveal">
-          <div>
-            <p class="tag" style="font-size:13px">En construcción · Medellín</p>
-            <h3 style="margin-top:10px">Mandá un paquete, hacé una compra o una fila, y seguí el servicio en el mapa</h3>
+      </div>
+    </section>
+
+    <!-- 03 PROCESO -->
+    <section class="chapter" id="proceso">
+      <div class="wrap">
+        <header class="ch-head reveal">
+          <span class="no">03</span>
+          <p class="tag">Cómo trabajo</p>
+          <h2>4 pasos, <em>sin enredos</em></h2>
+        </header>
+        <div class="ch-body">
+          <ol class="steps">
+            <li class="reveal"><span class="roman">I</span><div class="ic"><svg class="i"><use href="#i-chat"/></svg></div><h3>Hablamos</h3><p>Me contás tu idea, con tus palabras.</p></li>
+            <li class="reveal"><span class="roman">II</span><div class="ic"><svg class="i"><use href="#i-doc"/></svg></div><h3>Precio claro</h3><p>Te mando qué hago, cuándo y cuánto cuesta.</p></li>
+            <li class="reveal"><span class="roman">III</span><div class="ic"><svg class="i"><use href="#i-build"/></svg></div><h3>Lo construyo</h3><p>Te muestro avances y opinás en el camino.</p></li>
+            <li class="reveal"><span class="roman">IV</span><div class="ic"><svg class="i"><use href="#i-rocket"/></svg></div><h3>Lanzamos</h3><p>Pruebo todo y te sigo acompañando.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 POR QUÉ -->
+    <section class="chapter" id="porque">
+      <div class="wrap">
+        <header class="ch-head reveal">
+          <span class="no">04</span>
+          <p class="tag">Por qué conmigo</p>
+          <h2>Desarrollador con <em>ojo de calidad</em></h2>
+        </header>
+        <div class="ch-body">
+          <div class="why">
+            <div class="reveal"><svg class="i"><use href="#i-money"/></svg><b>Precio justo</b><small>A la medida de tu bolsillo</small></div>
+            <div class="reveal"><svg class="i"><use href="#i-shield"/></svg><b>Todo probado</b><small>Más de 6 años revisando software</small></div>
+            <div class="reveal"><svg class="i"><use href="#i-hand"/></svg><b>Trato directo</b><small>Hablás conmigo, sin intermediarios</small></div>
+            <div class="reveal"><svg class="i"><use href="#i-clock"/></svg><b>Te acompaño</b><small>Soporte después de entregar</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 PROYECTO -->
+    <section class="chapter band" id="proyecto">
+      <div class="wrap">
+        <header class="ch-head reveal">
+          <span class="no">05</span>
+          <p class="tag">Mi proyecto</p>
+          <h2>Lo que estoy <em>construyendo</em></h2>
+        </header>
+        <div class="ch-body proj">
+          <div class="proj-copy reveal">
+            <span class="stamp">En construcción · Medellín</span>
+            <h3>Mandá un paquete, hacé una compra o una fila, y seguí el servicio en el mapa</h3>
             <p>Una app que te conecta con profesionales de tu ciudad. Ves el precio antes de pedir y sabés en todo momento dónde va tu pedido.</p>
             <div class="nums">
               <div><b data-n="3">3</b><small>apps conectadas</small></div>
@@ -196,7 +220,7 @@
               <div><b data-n="914">914</b><small>mejoras en 4 meses</small></div>
             </div>
           </div>
-          <div class="shots">
+          <div class="shots reveal">
             <figure><img src="imagenes/01-pedir-un-servicio.webp" alt="Pantalla para pedir un servicio y ver el precio antes"><figcaption>Pedís</figcaption></figure>
             <figure><img src="imagenes/03-seguimiento-en-el-mapa.webp" alt="Pantalla de seguimiento del servicio en el mapa"><figcaption>Seguís en el mapa</figcaption></figure>
             <figure><img src="imagenes/05-profesional-en-camino.webp" alt="App del profesional con el paso a paso del servicio"><figcaption>El profesional te atiende</figcaption></figure>
@@ -212,7 +236,7 @@
     </section>
 
     <!-- PARA TÉCNICOS -->
-    <section style="padding-top:0" id="tecnico">
+    <section class="chapter tight" id="tecnico">
       <div class="wrap">
         <details>
           <summary><svg class="i"><use href="#i-code"/></svg>¿Sabés de tecnología? Mirá el detalle técnico<svg class="i plus"><use href="#i-plus"/></svg></summary>
@@ -227,24 +251,26 @@
     </section>
 
     <!-- CONTACTO -->
-    <section class="band contact" id="contacto">
+    <section class="contact" id="contacto">
       <div class="wrap">
-        <div>
-          <p class="tag">Contacto</p>
-          <h2 style="margin-top:12px">¿Hablamos?<br><em>Contame tu idea</em></h2>
-          <p>Te respondo con una propuesta clara, sin compromiso.</p>
-          <a class="btn-wa big-wa" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribime por WhatsApp<span class="go" aria-hidden="true">→</span></a>
-          <p class="phone-num">318 725 8853</p>
-        </div>
-        <div class="qr">
-          <img src="qr-whatsapp.svg" width="450" height="450" alt="Código QR para escribir a Felipe Madrigal por WhatsApp">
-          <p style="margin-top:10px">Escaneame con la cámara</p>
+        <p class="tag">Contacto</p>
+        <h2 class="big">¿Hablamos?<br><em>Contame tu idea</em></h2>
+        <div class="contact-grid">
+          <div>
+            <p>Te respondo con una propuesta clara, sin compromiso.</p>
+            <a class="btn-wa big-wa" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribime por WhatsApp<span class="go" aria-hidden="true">→</span></a>
+            <p class="phone-num">318 725 8853</p>
+          </div>
+          <div class="qr">
+            <img src="qr-whatsapp.svg" width="450" height="450" alt="Código QR para escribir a Felipe Madrigal por WhatsApp">
+            <p>Escaneame con la cámara</p>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>© 2026 Felipe Madrigal · Desarrollo de software profesional a tu alcance</footer>
+  <footer><div class="wrap"><span>© 2026 Felipe Madrigal</span><span>Desarrollo de software profesional a tu alcance</span></div></footer>
   <a class="float" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener" aria-label="Escribime por WhatsApp"><svg class="i"><use href="#i-wa"/></svg></a>
   <script src="main.js"></script>
 </body>
