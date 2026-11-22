@@ -13,6 +13,7 @@
       try { t = localStorage.getItem('tema'); } catch (e) {}
       if (t !== 'light' && t !== 'dark') t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('js');
       document.querySelector('meta[name="theme-color"]').setAttribute('content', t === 'light' ? '#f6f6f4' : '#0e0e10');
     })();
   </script>
@@ -70,6 +71,13 @@
         <svg viewBox="0 0 128 150" aria-hidden="true"><path d="M48 8 H34 Q24 8 24 18 V60 Q24 71 10 75 Q24 79 24 90 V132 Q24 142 34 142 H48"/><path d="M80 8 H94 Q104 8 104 18 V60 Q104 71 118 75 Q104 79 104 90 V132 Q104 142 94 142 H80"/></svg>
         <span><b>FELIPE MADRIGAL</b><small>SOFTWARE A TU ALCANCE</small></span>
       </a>
+      <nav class="links" aria-label="Secciones">
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Cómo trabajo</a>
+        <a href="#proyecto">Proyecto</a>
+        <a href="#contacto">Contacto</a>
+        <i class="pill" aria-hidden="true"></i>
+      </nav>
       <button class="iconbtn" id="theme" type="button" title="Modo día / noche" aria-label="Cambiar modo día o noche"><svg class="i"><use href="#i-sun"/></svg></button>
     </div>
   </header>
@@ -80,10 +88,10 @@
       <div class="wrap">
         <div>
           <p class="tag">Medellín · Colombia</p>
-          <h1 style="margin-top:14px">Tu negocio,<br><em>más fácil</em><br>con tecnología</h1>
+          <h1 style="margin-top:14px" class="words"><span>Tu</span> <span>negocio,</span><br><em><span>más</span> <span>fácil</span></em><br><span>con</span> <span>tecnología</span></h1>
           <p class="lead">Hago páginas, apps y asistentes con inteligencia artificial. Vendé más y ahorrá tiempo, desde tu celular.</p>
           <div class="actions">
-            <a class="btn-wa" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribime por WhatsApp</a>
+            <a class="btn-wa" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribime por WhatsApp<span class="go" aria-hidden="true">→</span></a>
           </div>
           <div class="pics" aria-label="Tu negocio, en el celular, vende más">
             <div class="pic"><span><svg class="i"><use href="#i-shop"/></svg></span>Tu negocio</div>
@@ -109,6 +117,14 @@
             <g transform="translate(47 44) scale(.2)" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"><path d="M48 8 H34 Q24 8 24 18 V60 Q24 71 10 75 Q24 79 24 90 V132 Q24 142 34 142 H48"/><path d="M80 8 H94 Q104 8 104 18 V60 Q104 71 118 75 Q104 79 104 90 V132 Q104 142 94 142 H80"/></g>
           </svg>
         </div>
+      </div>
+    </div>
+
+    <!-- CINTA -->
+    <div class="ticker" aria-hidden="true">
+      <div class="track">
+        <span>Páginas web</span><span>Tiendas en línea</span><span>Apps a tu medida</span><span>Asistentes con IA</span><span>Pruebas de calidad</span><span>Automatizaciones</span>
+        <span>Páginas web</span><span>Tiendas en línea</span><span>Apps a tu medida</span><span>Asistentes con IA</span><span>Pruebas de calidad</span><span>Automatizaciones</span>
       </div>
     </div>
 
@@ -139,7 +155,7 @@
         <div class="head">
           <div><p class="tag">Cómo trabajo</p><h2>4 pasos, sin enredos</h2></div>
         </div>
-        <ol class="steps">
+        <ol class="steps"><i class="line" aria-hidden="true"></i>
           <li class="reveal"><div class="ic"><svg class="i"><use href="#i-chat"/></svg><b>1</b></div><h3>Hablamos</h3><p>Me contás tu idea, con tus palabras.</p></li>
           <li class="reveal"><div class="ic"><svg class="i"><use href="#i-doc"/></svg><b>2</b></div><h3>Precio claro</h3><p>Te mando qué hago, cuándo y cuánto cuesta.</p></li>
           <li class="reveal"><div class="ic"><svg class="i"><use href="#i-build"/></svg><b>3</b></div><h3>Lo construyo</h3><p>Te muestro avances y opinás en el camino.</p></li>
@@ -217,7 +233,7 @@
           <p class="tag">Contacto</p>
           <h2 style="margin-top:12px">¿Hablamos?<br><em>Contame tu idea</em></h2>
           <p>Te respondo con una propuesta clara, sin compromiso.</p>
-          <a class="btn-wa big-wa" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribime por WhatsApp</a>
+          <a class="btn-wa big-wa" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribime por WhatsApp<span class="go" aria-hidden="true">→</span></a>
           <p class="phone-num">318 725 8853</p>
         </div>
         <div class="qr">

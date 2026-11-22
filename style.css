@@ -24,7 +24,7 @@
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:18px;line-height:1.55;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:18px;line-height:1.55;overflow-x:clip;-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:var(--display);color:var(--ink);margin:0;font-weight:600;line-height:1.02;text-wrap:balance}
 p{margin:0}
 a{color:inherit}
@@ -190,5 +190,81 @@ footer{padding-block:26px;text-align:center;font-size:14px;color:var(--muted)}
 .float svg{font-size:30px}
 
 .reveal{opacity:1;transform:none;transition:opacity .7s,transform .7s}
+
+
+/* ===== Capa moderna (ideas de 21st.dev reescritas a mano, sin librerías) ===== */
+
+/* Textura de papel muy suave: da el toque vintage sin degradados de moda */
+body::after{content:"";position:fixed;inset:0;z-index:40;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+:root[data-theme="dark"] body::after{mix-blend-mode:screen;opacity:.035}
+
+/* Barra: enlaces con píldora que se desliza a la sección activa */
+.links{position:relative;display:flex;gap:2px;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--bg2)}
+.links a{position:relative;z-index:1;text-decoration:none;font:600 14px var(--sans);color:var(--muted);padding:7px 14px;border-radius:999px;transition:color .25s}
+.links a:hover,.links a.on{color:var(--ink)}
+.links .pill{position:absolute;z-index:0;top:4px;bottom:4px;left:0;width:0;border-radius:999px;background:var(--bg3);box-shadow:inset 0 -2px 0 var(--gold);opacity:0;transition:left .45s cubic-bezier(.2,.8,.2,1),width .45s cubic-bezier(.2,.8,.2,1),opacity .3s}
+@media (max-width:860px){.links{display:none}}
+
+/* Héroe: retícula fina de plano técnico, desvanecida en los bordes */
+.hero{position:relative;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 30% 40%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 30% 40%,#000 20%,transparent 75%);opacity:.7}
+
+/* Título: las palabras entran una por una */
+.js .words span{display:inline-block;opacity:0;transform:translateY(.35em);filter:blur(6px);animation:word .8s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes word{to{opacity:1;transform:none;filter:none}}
+
+/* Botón de WhatsApp: flecha que avanza */
+.btn-wa .go{display:inline-block;transition:transform .25s;margin-left:2px}
+.btn-wa:hover .go{transform:translateX(4px)}
+.btn-wa{box-shadow:0 0 0 0 color-mix(in srgb,var(--wa) 40%,transparent);transition:transform .2s,box-shadow .3s}
+.btn-wa:hover{box-shadow:0 0 0 6px color-mix(in srgb,var(--wa) 18%,transparent)}
+
+/* Cinta de servicios, estilo marquesina */
+.ticker{border-block:1px solid var(--line);overflow:hidden;padding-block:14px;background:var(--bg2);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ticker .track{display:flex;width:max-content;animation:tick 38s linear infinite}
+.ticker span{font:600 20px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);white-space:nowrap;display:flex;align-items:center}
+.ticker span::after{content:"✦";color:var(--gold);font-size:14px;margin-inline:28px}
+.ticker:hover .track{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* Selector de negocio: el dorado se mueve suave */
+.biz button{transition:transform .25s,border-color .25s,background .25s,box-shadow .25s}
+.biz button[aria-pressed="true"]{background:var(--gold-soft)}
+
+/* Tarjetas de servicio: luz dorada que sigue al dedo o al mouse */
+.face{overflow:hidden}
+.face::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(212,171,85,.16),transparent 60%)}
+.face::after{content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;padding:1px;opacity:0;transition:opacity .3s;
+  background:radial-gradient(200px circle at var(--mx,50%) var(--my,50%),var(--band-gold),transparent 70%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.card:hover .face::before,.card:hover .face::after,.card:focus-visible .face::before{opacity:1}
+.face>*{position:relative}
+
+/* Pasos: la línea se dibuja al bajar */
+.steps::before{display:none}
+.steps .line{position:absolute;top:44px;left:12%;right:12%;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 16px);opacity:.7;transform-origin:left;transform:scaleX(var(--p,1))}
+.steps .ic{transition:transform .4s,background .4s}
+.steps li:hover .ic{transform:translateY(-4px) rotate(-4deg);background:var(--gold-soft)}
+@media (max-width:760px){.steps .line{display:none}}
+
+/* Por qué conmigo: borde dorado al pasar */
+.why div{transition:border-color .25s,transform .5s cubic-bezier(.2,.8,.2,1),opacity .8s,filter .8s}
+.why div:hover{border-color:var(--gold);transform:translateY(-2px)}
+
+/* Capturas del proyecto: leve inclinación 3D */
+.shots{perspective:900px}
+.shots img{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.shots:hover figure:nth-child(1) img{transform:rotateY(10deg) translateX(6px)}
+.shots:hover figure:nth-child(2) img{transform:translateY(-26px) scale(1.04)}
+.shots:hover figure:nth-child(3) img{transform:rotateY(-10deg) translateX(-6px)}
+
+/* Aparición al bajar: sube, se aclara y se enfoca */
+.reveal.wait{opacity:0;transform:translateY(22px);filter:blur(4px)}
+.reveal{transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1),filter .8s}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}

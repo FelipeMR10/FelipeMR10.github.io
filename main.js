@@ -73,7 +73,7 @@
 
   /* Entrada suave al hacer scroll (visible por defecto) */
   if('IntersectionObserver' in window && !reduce){
-    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove('wait'); io.unobserve(e.target);} }); },{rootMargin:'0px 0px -8% 0px'});
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ var t=e.target; t.classList.remove('wait'); io.unobserve(t); setTimeout(function(){ t.style.transitionDelay=''; }, 1400);} }); },{rootMargin:'0px 0px -8% 0px'});
     document.querySelectorAll('.reveal').forEach(function(el){
       var r = el.getBoundingClientRect(); if(r.top > innerHeight){ el.classList.add('wait'); io.observe(el); }
     });
@@ -88,6 +88,43 @@
     }); });
     nums.forEach(function(n){ io2.observe(n); });
   }
+
+  /* Título: cada palabra entra con un pequeño retraso */
+  document.querySelectorAll('.words span').forEach(function(w,i){ w.style.animationDelay = (0.08 + i*0.09)+'s'; });
+
+  /* Barra: píldora que sigue a la sección visible */
+  var links = document.querySelector('.links');
+  if(links){
+    var pill = links.querySelector('.pill'), as = [].slice.call(links.querySelectorAll('a'));
+    var movePill = function(a){
+      as.forEach(function(x){ x.classList.toggle('on', x===a); });
+      if(!a){ pill.style.opacity = 0; return; }
+      pill.style.left = a.offsetLeft+'px'; pill.style.width = a.offsetWidth+'px'; pill.style.opacity = 1;
+    };
+    var secs = as.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+    var onScroll = function(){
+      var y = innerHeight*0.35, cur = null;
+      secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top <= y) cur = as[i]; });
+      if(document.getElementById('servicios').getBoundingClientRect().top > y) cur = null;
+      movePill(cur);
+      /* línea de los pasos */
+      if(line){ var r = steps.getBoundingClientRect(); var p = Math.max(0, Math.min(1, (innerHeight*0.85 - r.top)/(r.height+innerHeight*0.2))); line.style.setProperty('--p', reduce?1:p.toFixed(3)); }
+    };
+    var steps = document.querySelector('.steps'), line = steps && steps.querySelector('.line');
+    addEventListener('scroll', onScroll, {passive:true}); addEventListener('resize', onScroll); onScroll();
+  }
+
+  /* Tarjetas: luz dorada que sigue al puntero */
+  svc.addEventListener('pointermove', function(e){
+    var f = e.target.closest && e.target.closest('.card'); if(!f) return;
+    var r = f.getBoundingClientRect();
+    f.querySelectorAll('.face').forEach(function(x){ x.style.setProperty('--mx', (e.clientX-r.left)+'px'); x.style.setProperty('--my', (e.clientY-r.top)+'px'); });
+  });
+
+  /* Aparición escalonada en grupos */
+  ['.svc','.steps','.why'].forEach(function(sel){
+    document.querySelectorAll(sel+' > .reveal').forEach(function(el,i){ el.style.transitionDelay = (i*0.08)+'s'; });
+  });
 
   /* Tema */
   document.getElementById('theme').onclick = function(){
