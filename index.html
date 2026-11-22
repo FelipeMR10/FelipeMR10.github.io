@@ -1,30 +1,20 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Felipe Madrigal · Desarrollo de software profesional a tu alcance</title>
   <meta name="description" content="Páginas web, tiendas en línea, apps y asistentes con inteligencia artificial. Vendé más y ahorrá tiempo, desde tu celular. Felipe Madrigal, Medellín, Colombia.">
-  <meta name="theme-color" content="#f2ede3">
-  <script>
-    /* Tema antes de pintar para evitar parpadeo: lo elegido, o el del dispositivo */
-    (function () {
-      var t = null;
-      try { t = localStorage.getItem('tema'); } catch (e) {}
-      if (t !== 'light' && t !== 'dark') t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', t);
-      document.documentElement.classList.add('js');
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', t === 'light' ? '#f2ede3' : '#0e0e10');
-    })();
-  </script>
+  <meta name="theme-color" content="#09090b">
+  <script>document.documentElement.classList.add('js');</script>
   <meta property="og:title" content="Felipe Madrigal · Desarrollo de software profesional a tu alcance">
   <meta property="og:description" content="Tu negocio, más fácil con tecnología. Páginas, apps y asistentes con IA. Escribime por WhatsApp.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://felipemr10.github.io/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Saira+Condensed:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -64,154 +54,187 @@
     </defs>
   </svg>
 
+  <!-- Barra flotante -->
   <header class="nav">
-    <div class="wrap">
+    <div class="nav-in">
       <a class="brand" href="#inicio" aria-label="Felipe Madrigal, inicio">
         <svg viewBox="0 0 128 150" aria-hidden="true"><path d="M48 8 H34 Q24 8 24 18 V60 Q24 71 10 75 Q24 79 24 90 V132 Q24 142 34 142 H48"/><path d="M80 8 H94 Q104 8 104 18 V60 Q104 71 118 75 Q104 79 104 90 V132 Q104 142 94 142 H80"/></svg>
-        <span><b>Felipe Madrigal</b><small>Software a tu alcance</small></span>
+        <b>Felipe Madrigal</b>
       </a>
       <nav class="links" aria-label="Secciones">
         <a href="#servicios">Servicios</a>
-        <a href="#proceso">Cómo trabajo</a>
+        <a href="#proceso">Proceso</a>
         <a href="#proyecto">Proyecto</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <button class="iconbtn" id="theme" type="button" title="Modo día / noche" aria-label="Cambiar modo día o noche"><svg class="i"><use href="#i-sun"/></svg></button>
+      <span class="clock" aria-label="Hora en Medellín"><i></i>MDE <span id="clock">--:--</span></span>
     </div>
   </header>
 
   <main id="inicio">
     <!-- PORTADA -->
     <section class="hero">
-      <div class="wrap">
-        <div class="masthead">
-          <span>Medellín · Colombia</span>
-          <span class="mid">Edición 2026</span>
-          <span>Software a tu alcance</span>
+      <div class="grid-bg" aria-hidden="true"></div>
+      <div class="wrap hero-in">
+        <div class="hero-copy">
+          <p class="badge reveal-now"><i></i>Medellín · Colombia<span class="opt"> · Software a tu alcance</span></p>
+          <h1 class="reveal-now">Tu negocio, <span class="hl">más fácil</span> con tecnología</h1>
+          <p class="lead reveal-now">Hago páginas, apps y asistentes con inteligencia artificial. Vendé más y ahorrá tiempo, desde tu celular.</p>
+          <div class="actions reveal-now">
+            <a class="btn-wa" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribime por WhatsApp</a>
+            <a class="btn-ghost" href="#servicios">Ver lo que hago <span aria-hidden="true">→</span></a>
+          </div>
+          <ol class="flow reveal-now" aria-label="Tu negocio, en el celular, vende más">
+            <li><svg class="i"><use href="#i-shop"/></svg>Tu negocio</li>
+            <li><svg class="i"><use href="#i-phone"/></svg>En el celular</li>
+            <li><svg class="i"><use href="#i-money"/></svg>Más ventas</li>
+          </ol>
         </div>
 
-        <h1 class="words">
-          <span>Tu</span> <span>negocio,</span><br>
-          <em><span>más</span> <span>fácil</span></em><br>
-          <span>con</span> <span>tecnología</span>
-        </h1>
-
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <p class="lead">Hago páginas, apps y asistentes con inteligencia artificial. Vendé más y ahorrá tiempo, desde tu celular.</p>
-            <a class="btn-wa" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribime por WhatsApp<span class="go" aria-hidden="true">→</span></a>
-            <ol class="pics" aria-label="Tu negocio, en el celular, vende más">
-              <li><svg class="i"><use href="#i-shop"/></svg>Tu negocio</li>
-              <li><svg class="i"><use href="#i-phone"/></svg>En el celular</li>
-              <li><svg class="i"><use href="#i-money"/></svg>Más ventas</li>
-            </ol>
+        <div class="hero-visual reveal-now" aria-hidden="true">
+          <div class="term">
+            <div class="term-bar"><i></i><i></i><i></i><span>asistente.js</span></div>
+            <pre class="code" id="code"></pre>
           </div>
-
-          <div class="hero-phone">
-            <div class="phone" aria-label="Ejemplo: un cliente pide por WhatsApp y el asistente responde solo">
-              <div class="screen">
-                <header><i></i>Frutas Don Jorge<small style="margin-left:auto;opacity:.6;font-weight:500">en línea</small></header>
-                <div class="chat" id="chat"></div>
-              </div>
+          <div class="phone">
+            <div class="screen">
+              <header><i></i>Frutas Don Jorge<small>en línea</small></header>
+              <div class="chat" id="chat"></div>
             </div>
-            <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
-              <defs><path id="circ" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
-              <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="1"/>
-              <circle cx="60" cy="60" r="33" fill="none" stroke="currentColor" stroke-width="1"/>
-              <text><textPath href="#circ">Calidad probada · Trato directo · </textPath></text>
-              <g transform="translate(47 44) scale(.2)" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"><path d="M48 8 H34 Q24 8 24 18 V60 Q24 71 10 75 Q24 79 24 90 V132 Q24 142 34 142 H48"/><path d="M80 8 H94 Q104 8 104 18 V60 Q104 71 118 75 Q104 79 104 90 V132 Q104 142 94 142 H80"/></g>
-            </svg>
-            <p class="caption">Fig. 1 — Un cliente pide y el asistente responde solo.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="ticker" aria-hidden="true">
+    <!-- CIFRAS -->
+    <section class="stats-wrap">
+      <div class="wrap">
+        <div class="stats">
+          <div><b>+<span data-n="9000">9.000</span></b><small>horas de estudio</small></div>
+          <div><b>+<span data-n="6">6</span></b><small>años probando software</small></div>
+          <div><b data-n="918">918</b><small>pruebas automáticas en mi proyecto</small></div>
+          <div><b data-n="34">34</b><small>certificaciones</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CINTA TECNOLOGÍAS -->
+    <div class="marquee" aria-label="Tecnologías que uso">
       <div class="track">
-        <span>Páginas web</span><span>Tiendas en línea</span><span>Apps a tu medida</span><span>Asistentes con IA</span><span>Pruebas de calidad</span><span>Automatizaciones</span>
-        <span>Páginas web</span><span>Tiendas en línea</span><span>Apps a tu medida</span><span>Asistentes con IA</span><span>Pruebas de calidad</span><span>Automatizaciones</span>
+        <span>JavaScript</span><span>TypeScript</span><span>React</span><span>Node.js</span><span>Flutter</span><span>.NET / C#</span><span>Firebase</span><span>Supabase</span><span>Google Maps</span><span>Playwright</span><span>Appium</span><span>Claude Code</span>
+        <span aria-hidden="true">JavaScript</span><span aria-hidden="true">TypeScript</span><span aria-hidden="true">React</span><span aria-hidden="true">Node.js</span><span aria-hidden="true">Flutter</span><span aria-hidden="true">.NET / C#</span><span aria-hidden="true">Firebase</span><span aria-hidden="true">Supabase</span><span aria-hidden="true">Google Maps</span><span aria-hidden="true">Playwright</span><span aria-hidden="true">Appium</span><span aria-hidden="true">Claude Code</span>
       </div>
     </div>
 
-    <!-- 01 NEGOCIO -->
-    <section class="chapter" id="negocio">
+    <!-- NEGOCIO -->
+    <section id="negocio">
       <div class="wrap">
-        <header class="ch-head reveal">
-          <span class="no">01</span>
-          <p class="tag">Para vos</p>
-          <h2>¿Qué negocio <em>tenés?</em></h2>
-        </header>
-        <div class="ch-body">
+        <div class="head reveal"><p class="eyebrow">Para vos</p><h2>¿Qué negocio tenés?</h2></div>
+        <div class="biz-box reveal">
           <div class="biz" role="group" aria-label="Elegí tu tipo de negocio" id="biz"></div>
           <div class="gain" id="gain" aria-live="polite"></div>
         </div>
       </div>
     </section>
 
-    <!-- 02 SERVICIOS -->
-    <section class="chapter band" id="servicios">
+    <!-- SERVICIOS: bento con mini pantallas -->
+    <section id="servicios">
       <div class="wrap">
-        <header class="ch-head reveal">
-          <span class="no">02</span>
-          <p class="tag">Servicios</p>
-          <h2>Lo que <em>hago</em></h2>
-        </header>
-        <div class="ch-body">
-          <ul class="svc" id="svc"></ul>
+        <div class="head reveal"><p class="eyebrow">Servicios</p><h2>Lo que hago</h2></div>
+        <div class="bento">
+          <article class="cell c-ia reveal">
+            <div class="vis vis-chat" aria-hidden="true">
+              <span class="m in">¿Tienen domicilio hoy?</span>
+              <span class="m out">¡Sí! Hasta las 9 p. m. ¿Qué te mando? <em>IA</em></span>
+              <span class="typing"><i></i><i></i><i></i></span>
+            </div>
+            <div class="txt"><span class="ic"><svg class="i"><use href="#i-bot"/></svg></span><h3>Inteligencia Artificial</h3><p>Asistentes que atienden a tus clientes y hacen tareas repetitivas, día y noche.</p>
+            <ul class="chips"><li>Chatbots</li><li>Agentes de IA</li><li>Automatizaciones</li><li>Desarrollo potenciado con IA</li></ul></div>
+          </article>
+
+          <article class="cell c-qa reveal">
+            <div class="vis vis-tests" aria-hidden="true">
+              <span><b>✓</b> el pedido se guarda</span>
+              <span><b>✓</b> el pago se confirma</span>
+              <span><b>✓</b> el mapa se actualiza</span>
+              <span class="sum">918 pruebas · todas en verde</span>
+            </div>
+            <div class="txt"><span class="ic"><svg class="i"><use href="#i-shield"/></svg></span><h3>Calidad y soporte</h3><p>Reviso que todo funcione bien hoy y mañana, y lo mantengo al día.</p>
+            <ul class="chips"><li>Pruebas QA manuales y automáticas</li><li>Playwright</li><li>Mantenimiento</li><li>Hosting</li></ul></div>
+          </article>
+
+          <article class="cell c-web reveal">
+            <div class="vis vis-browser" aria-hidden="true">
+              <div class="bar"><i></i><i></i><i></i><span>tunegocio.com</span></div>
+              <div class="page"><span class="l1"></span><span class="l2"></span><span class="btn"></span><div class="cards"><span></span><span></span><span></span></div></div>
+            </div>
+            <div class="txt"><span class="ic"><svg class="i"><use href="#i-web"/></svg></span><h3>Páginas y tiendas</h3><p>Tu negocio en internet, bonito en el celular y listo para vender.</p>
+            <ul class="chips"><li>Páginas web</li><li>Landing pages</li><li>eCommerce</li><li>Diseño responsive</li></ul></div>
+          </article>
+
+          <article class="cell c-app reveal">
+            <div class="vis vis-app" aria-hidden="true">
+              <div class="mini-phone"><span class="t"></span><span class="row a"></span><span class="row"></span><span class="row"></span><span class="mcta"></span></div>
+            </div>
+            <div class="txt"><span class="ic"><svg class="i"><use href="#i-phone"/></svg></span><h3>Apps a tu medida</h3><p>Apps y sistemas para lo que tu negocio necesite: citas, inventario, facturas.</p>
+            <ul class="chips"><li>Apps móviles</li><li>Plataformas web</li><li>Flutter</li><li>React</li></ul></div>
+          </article>
+
+          <article class="cell c-api reveal">
+            <div class="vis vis-nodes" aria-hidden="true">
+              <svg viewBox="0 0 260 110"><path class="wire" d="M40 55 H110 M150 55 H220 M130 35 V12"/><circle cx="130" cy="55" r="20"/><circle cx="30" cy="55" r="12"/><circle cx="230" cy="55" r="12"/><circle cx="130" cy="10" r="8"/><circle class="pulse" r="4"><animateMotion dur="2.4s" repeatCount="indefinite" path="M40 55 H110"/></circle><circle class="pulse" r="4"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M150 55 H220"/></circle></svg>
+            </div>
+            <div class="txt"><span class="ic"><svg class="i"><use href="#i-link"/></svg></span><h3>Conectar y automatizar</h3><p>Tus programas trabajando juntos para que no hagás todo a mano.</p>
+            <ul class="chips"><li>APIs REST</li><li>Integraciones con CRM</li><li>Pasarelas de pago</li><li>Automatización</li></ul></div>
+          </article>
+
+          <a class="cell c-idea reveal" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener">
+            <div class="txt"><span class="ic"><svg class="i"><use href="#i-idea"/></svg></span><h3>¿Tenés otra idea?</h3><p>Contámela. Si se puede hacer con software, lo conversamos.</p><span class="go">Escribime →</span></div>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- 03 PROCESO -->
-    <section class="chapter" id="proceso">
+    <!-- PROCESO -->
+    <section id="proceso">
       <div class="wrap">
-        <header class="ch-head reveal">
-          <span class="no">03</span>
-          <p class="tag">Cómo trabajo</p>
-          <h2>4 pasos, <em>sin enredos</em></h2>
-        </header>
-        <div class="ch-body">
-          <ol class="steps">
-            <li class="reveal"><span class="roman">I</span><div class="ic"><svg class="i"><use href="#i-chat"/></svg></div><h3>Hablamos</h3><p>Me contás tu idea, con tus palabras.</p></li>
-            <li class="reveal"><span class="roman">II</span><div class="ic"><svg class="i"><use href="#i-doc"/></svg></div><h3>Precio claro</h3><p>Te mando qué hago, cuándo y cuánto cuesta.</p></li>
-            <li class="reveal"><span class="roman">III</span><div class="ic"><svg class="i"><use href="#i-build"/></svg></div><h3>Lo construyo</h3><p>Te muestro avances y opinás en el camino.</p></li>
-            <li class="reveal"><span class="roman">IV</span><div class="ic"><svg class="i"><use href="#i-rocket"/></svg></div><h3>Lanzamos</h3><p>Pruebo todo y te sigo acompañando.</p></li>
-          </ol>
-        </div>
+        <div class="head reveal"><p class="eyebrow">Cómo trabajo</p><h2>4 pasos, sin enredos</h2></div>
+        <ol class="steps">
+          <i class="line" aria-hidden="true"><i></i></i>
+          <li class="reveal"><span class="n">01</span><span class="ic"><svg class="i"><use href="#i-chat"/></svg></span><h3>Hablamos</h3><p>Me contás tu idea, con tus palabras.</p></li>
+          <li class="reveal"><span class="n">02</span><span class="ic"><svg class="i"><use href="#i-doc"/></svg></span><h3>Precio claro</h3><p>Te mando qué hago, cuándo y cuánto cuesta.</p></li>
+          <li class="reveal"><span class="n">03</span><span class="ic"><svg class="i"><use href="#i-build"/></svg></span><h3>Lo construyo</h3><p>Te muestro avances y opinás en el camino.</p></li>
+          <li class="reveal"><span class="n">04</span><span class="ic"><svg class="i"><use href="#i-rocket"/></svg></span><h3>Lanzamos</h3><p>Pruebo todo y te sigo acompañando.</p></li>
+        </ol>
       </div>
     </section>
 
-    <!-- 04 POR QUÉ -->
-    <section class="chapter" id="porque">
+    <!-- POR QUÉ + SOBRE MÍ -->
+    <section id="porque">
       <div class="wrap">
-        <header class="ch-head reveal">
-          <span class="no">04</span>
-          <p class="tag">Por qué conmigo</p>
-          <h2>Desarrollador con <em>ojo de calidad</em></h2>
-        </header>
-        <div class="ch-body">
+        <div class="head reveal"><p class="eyebrow">Por qué conmigo</p><h2>Desarrollador con ojo de calidad</h2></div>
+        <div class="about">
+          <div class="me reveal">
+            <img src="imagenes/felipe.webp" width="480" height="480" alt="Felipe Madrigal">
+            <div><b>Felipe Madrigal</b><small>Tecnólogo en Desarrollo de Software · Pascual Bravo</small></div>
+          </div>
           <div class="why">
-            <div class="reveal"><svg class="i"><use href="#i-money"/></svg><b>Precio justo</b><small>A la medida de tu bolsillo</small></div>
-            <div class="reveal"><svg class="i"><use href="#i-shield"/></svg><b>Todo probado</b><small>Más de 6 años revisando software</small></div>
-            <div class="reveal"><svg class="i"><use href="#i-hand"/></svg><b>Trato directo</b><small>Hablás conmigo, sin intermediarios</small></div>
-            <div class="reveal"><svg class="i"><use href="#i-clock"/></svg><b>Te acompaño</b><small>Soporte después de entregar</small></div>
+            <div class="reveal"><span><svg class="i"><use href="#i-money"/></svg></span><b>Precio justo</b><small>A la medida de tu bolsillo</small></div>
+            <div class="reveal"><span><svg class="i"><use href="#i-shield"/></svg></span><b>Todo probado</b><small>Más de 6 años revisando software</small></div>
+            <div class="reveal"><span><svg class="i"><use href="#i-hand"/></svg></span><b>Trato directo</b><small>Hablás conmigo, sin intermediarios</small></div>
+            <div class="reveal"><span><svg class="i"><use href="#i-clock"/></svg></span><b>Te acompaño</b><small>Soporte después de entregar</small></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 05 PROYECTO -->
-    <section class="chapter band" id="proyecto">
+    <!-- PROYECTO -->
+    <section id="proyecto">
       <div class="wrap">
-        <header class="ch-head reveal">
-          <span class="no">05</span>
-          <p class="tag">Mi proyecto</p>
-          <h2>Lo que estoy <em>construyendo</em></h2>
-        </header>
-        <div class="ch-body proj">
-          <div class="proj-copy reveal">
-            <span class="stamp">En construcción · Medellín</span>
+        <div class="head reveal"><p class="eyebrow">Mi proyecto</p><h2>Lo que estoy construyendo</h2></div>
+        <div class="proj reveal">
+          <div class="proj-copy">
+            <span class="live"><i></i>En construcción · Medellín</span>
             <h3>Mandá un paquete, hacé una compra o una fila, y seguí el servicio en el mapa</h3>
             <p>Una app que te conecta con profesionales de tu ciudad. Ves el precio antes de pedir y sabés en todo momento dónde va tu pedido.</p>
             <div class="nums">
@@ -219,27 +242,26 @@
               <div><b data-n="918">918</b><small>pruebas automáticas</small></div>
               <div><b data-n="914">914</b><small>mejoras en 4 meses</small></div>
             </div>
+            <div class="uses">
+              <span><svg class="i"><use href="#i-phone"/></svg>Domicilios con mapa en vivo</span>
+              <span><svg class="i"><use href="#i-money"/></svg>Cobros por PSE y Nequi</span>
+              <span><svg class="i"><use href="#i-chart"/></svg>Paneles de control</span>
+            </div>
           </div>
-          <div class="shots reveal">
+          <div class="shots">
             <figure><img src="imagenes/01-pedir-un-servicio.webp" alt="Pantalla para pedir un servicio y ver el precio antes"><figcaption>Pedís</figcaption></figure>
             <figure><img src="imagenes/03-seguimiento-en-el-mapa.webp" alt="Pantalla de seguimiento del servicio en el mapa"><figcaption>Seguís en el mapa</figcaption></figure>
             <figure><img src="imagenes/05-profesional-en-camino.webp" alt="App del profesional con el paso a paso del servicio"><figcaption>El profesional te atiende</figcaption></figure>
-          </div>
-          <div class="uses">
-            <b>Lo que esto le sirve a tu negocio</b>
-            <span><svg class="i"><use href="#i-phone"/></svg>Domicilios con mapa en vivo</span>
-            <span><svg class="i"><use href="#i-money"/></svg>Cobros por PSE y Nequi</span>
-            <span><svg class="i"><use href="#i-chart"/></svg>Paneles de control</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- PARA TÉCNICOS -->
-    <section class="chapter tight" id="tecnico">
+    <section id="tecnico" class="tight">
       <div class="wrap">
-        <details>
-          <summary><svg class="i"><use href="#i-code"/></svg>¿Sabés de tecnología? Mirá el detalle técnico<svg class="i plus"><use href="#i-plus"/></svg></summary>
+        <details class="reveal">
+          <summary><span class="prompt">$</span>¿Sabés de tecnología? Mirá el detalle técnico<svg class="i plus"><use href="#i-plus"/></svg></summary>
           <div class="tech">
             <div><h4>Desarrollo</h4><ul class="chips"><li>JavaScript</li><li>TypeScript</li><li>React</li><li>Node.js</li><li>Flutter / Dart</li><li>.NET / C#</li><li>Firebase</li><li>Google Maps Platform</li><li>APIs REST</li><li>Git y GitHub</li></ul></div>
             <div><h4>Calidad (QA)</h4><ul class="chips"><li>+6 años como QA</li><li>Playwright</li><li>Appium</li><li>Postman</li><li>Pruebas unitarias y de widgets</li><li>Pruebas de Cloud Functions</li></ul></div>
@@ -251,14 +273,14 @@
     </section>
 
     <!-- CONTACTO -->
-    <section class="contact" id="contacto">
+    <section id="contacto">
       <div class="wrap">
-        <p class="tag">Contacto</p>
-        <h2 class="big">¿Hablamos?<br><em>Contame tu idea</em></h2>
-        <div class="contact-grid">
+        <div class="cta reveal">
           <div>
+            <p class="eyebrow">Contacto</p>
+            <h2>¿Hablamos? <span class="hl">Contame tu idea</span></h2>
             <p>Te respondo con una propuesta clara, sin compromiso.</p>
-            <a class="btn-wa big-wa" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribime por WhatsApp<span class="go" aria-hidden="true">→</span></a>
+            <a class="btn-wa big" href="https://wa.me/message/ZS7BVH67JTQZN1" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribime por WhatsApp</a>
             <p class="phone-num">318 725 8853</p>
           </div>
           <div class="qr">
