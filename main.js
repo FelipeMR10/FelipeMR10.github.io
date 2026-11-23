@@ -106,6 +106,13 @@
     nums.forEach(function(n){ io2.observe(n); });
   }
 
+  /* Botón flotante de WhatsApp: se oculta al llegar a Contacto, donde ya está el botón grande */
+  var flo = document.querySelector('.float'), cto = document.getElementById('contacto');
+  if(flo && cto){
+    var hideFloat = function(){ flo.classList.toggle('hide', cto.getBoundingClientRect().top < innerHeight*0.85); };
+    addEventListener('scroll', hideFloat, {passive:true}); addEventListener('resize', hideFloat); hideFloat();
+  }
+
   /* Barra: sección activa + línea de los pasos */
   var as = [].slice.call(document.querySelectorAll('.links a'));
   var secs = as.map(function(a){ return document.querySelector(a.getAttribute('href')); });

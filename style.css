@@ -279,3 +279,5 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;p
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.reveal-now,.vis-tests span{opacity:1!important;transform:none!important;filter:none!important}}
 .steps{padding-top:26px}
 @media (max-width:480px){.badge .opt{display:none}}
+.float{transition:opacity .3s,transform .3s}
+.float.hide{opacity:0;transform:scale(.6) translateY(10px);pointer-events:none}
